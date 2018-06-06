@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../../style/reset.css">
+</head>
+
+<style type="text/css">
+
+    .triangle{
+        width: 0;
+        height: 0;
+        border-left: 130px solid transparent;
+        border-right: 130px solid transparent;
+        border-bottom: 200px solid red;
+        /* border-top: 100px solid rebeccapurple;  */
+    }
+
+
+    .main {
+        position: relative;
+        top: 100px;
+    }
+
+    .header {
+        width: 0;
+        height: 0;
+        border-width: 0px 30px 30px;
+        border-style: solid;
+        border-color: transparent transparent #333;
+        /*透明 透明  灰*/
+        left: 50%;
+        margin-left: -100px;
+        margin-top: 1px;
+        position: absolute;
+    }
+
+    .header span {
+        margin-top: 0.1px;
+        display: block;
+        width: 0;
+        height: 0;
+        border-width: 0px 28px 29px;
+        border-style: solid;
+        border-color: transparent transparent #fc0;
+        /*透明 透明  黄*/
+        position: absolute;
+        top: 1px;
+        left: -28px;
+    }
+
+
+    .content {
+        width: 300px;
+        height: 100px;
+        background-color: #fc0;
+        border-radius: 10px;
+        border: 1.4px solid black;
+        position: absolute;
+        left: 50%;
+        top: 30px;
+        margin-left: -150px;
+    }
+</style>
+
+
+<body>
+
+    <div class="triangle"></div>
+
+    <div class="main">
+        <div class="content"></div>
+        <div class="header">
+            <span></span>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

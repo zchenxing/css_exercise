@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS3瀑布流</title>
+    <style>
+        /*大层*/
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        /*瀑布流层*/
+
+        .waterfall {
+            -moz-column-count: 4;
+            /* Firefox */
+            -webkit-column-count: 4;
+            -moz-column-gap: 1em;
+            -webkit-column-gap: 1em;
+            /* Safari 和 Chrome */
+            column-count: 4;
+            column-gap: 1em;
+        }
+        /*一个内容层*/
+
+        .item {
+            padding: 1em;
+            margin: 0 0 2em 0;
+            -moz-page-break-inside: avoid;
+            -webkit-column-break-inside: avoid;
+            break-inside: avoid;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+
+            transition: box-shadow .5s;
+        }
+
+        .item:hover {
+            box-shadow: 3px 3px 20px #666;
+        }
+
+        .item img {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .item p {
+            word-wrap: break-word;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="waterfall">
+            <div class="item">
+                <img src="https://imgsa.baidu.com/baike/c0%3Dbaike150%2C5%2C5%2C150%2C50/sign=9fe1d71697ef76c6c4dff379fc7f969f/b03533fa828ba61ed2efcd184634970a304e5987.jpg">
+                <p> 5 Donec a fermentum nisi. Integer dolor est, commodo ut sagittis vitae, egestas at augue.</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+
+<script>
+    var list = document.getElementsByClassName('waterfall')[0];
+
+    var images = [
+        "https://imgsa.baidu.com/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=03948ea9b4315c60579863bdecd8a076/8326cffc1e178a825a6b5d1cfe03738da977e833.jpg",
+
+        "https://imgsa.baidu.com/baike/c0%3Dbaike72%2C5%2C5%2C72%2C24/sign=f3d4063328738bd4d02cba63c0e2ecb3/a2cc7cd98d1001e910616de1be0e7bec55e797fa.jpg",
+
+        "http://img5.imgtn.bdimg.com/it/u=1949631,2512443548&fm=11&gp=0.jpg",
+
+        "http://g.hiphotos.baidu.com/image/pic/item/6d81800a19d8bc3ebf71a62e888ba61ea9d345dc.jpg",
+
+        "http://www.ah.xinhuanet.com/2014-12/15/1113648448_14186288335341n.jpg",
+
+        "http://c.hiphotos.baidu.com/zhidao/pic/item/7aec54e736d12f2ef3baacab4ec2d562843568b9.jpg",
+
+        "http://img4.imgtn.bdimg.com/it/u=616638994,2017066368&fm=27&gp=0.jpg"
+    ];
+
+    for (let i = 0; i < images.length; i++) {
+        var html =
+            `<div class="item">
+            <img src="${images[i]}">
+            <p>第${i+1}张图<br>${images[i]}</p>
+        </div>`
+
+        list.innerHTML += html;
+    }
+</script>
+
+</html>

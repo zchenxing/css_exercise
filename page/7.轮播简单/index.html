@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../style/reset.css">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="loop-wrap">
+        <div class="loop-images-container">                    
+            <div style="background:palegreen;" class="loop-image">1111</div>
+            <div style="background:palevioletred;" class="loop-image">2222</div>
+            <div style="background:plum;" class="loop-image">3333</div>
+            <div style="background:lightcoral;" class="loop-image">4444</div>
+
+        <div class="loop-images-container">
+            
+        <!-- <ul class="page-btn">
+            <li>
+                <a href="javascript:void(0);"></a>
+            </li>
+            <li>
+                <a href="javascript:void(0);"></a>
+            </li>
+            <li>
+                <a href="javascript:void(0);"></a>
+            </li>
+        </ul> -->
+    </div>
+
+</body>
+
+<style>
+    .loop-wrap {
+        position: relative;
+        width: 700px;
+        height: 400px;
+        margin: 100px auto;
+        overflow: hidden;
+        border: 1px solid palevioletred;
+    }
+
+
+    .loop-images-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 2800px;
+        height: 100%;
+
+        transform: translate(0, 0);
+        animation: loop 10s linear infinite;
+    }
+
+
+    .loop-image {
+        float: left;
+        width: 700px;
+        height: 100%;
+    }
+
+
+    @keyframes loop {
+        0% {transform: translate(0, 0);}
+        20% {transform: translate(0, 0);}
+
+        25% {transform: translate(-700px, 0);}
+        45% {transform: translate(-700px, 0);}
+
+        50% {transform: translate(-1400px, 0);}
+        70% {transform: translate(-1400px, 0);}
+
+        75% {transform: translate(-2100px, 0);}
+        95% {transform: translate(-2100px, 0);}
+
+        100% {transform: translate(0, 0);}
+    }
+
+
+  
+    .page-btn {
+        z-index: 10;
+        position: absolute;
+        bottom: 20px;
+        width: 130px;
+        left: 0px;
+        right: 0px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .page-btn li {
+        float: left;
+        width: 33%;
+        height: 20px;
+    }    
+
+    .page-btn a {
+        display: inline-block;
+        background: #cc00cc;
+        width: 20px;
+        height: 100%;
+        border-radius: 10px;
+    }
+
+    .page-btn a:hover {
+        background: #770077;
+    }
+
+</style>
+
+
+<script>
+
+</script>
+
+</html>

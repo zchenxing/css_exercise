@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<!-- saved from url=(0143)http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/ -->
+<html lang="zh-CN"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="张鑫旭的个人博客_web前端技术文章_小折腾：JavaScript与元素间的抛物线轨迹运动">
+<meta name="keywords" content="web前端,HTML5,CSS3,jQuery,SVG,canvas">
+<meta name="author" content="张鑫旭,zhangxinxu">
+<title>小折腾：JavaScript与元素间的抛物线轨迹运动 «  张鑫旭-鑫空间-鑫生活</title>
+<link rel="stylesheet" href="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/style.css">
+<link rel="pingback" href="http://www.zhangxinxu.com/wordpress/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="张鑫旭-鑫空间-鑫生活 » Feed" href="http://www.zhangxinxu.com/wordpress/feed/">
+<link rel="alternate" type="application/rss+xml" title="张鑫旭-鑫空间-鑫生活 » 评论Feed" href="http://www.zhangxinxu.com/wordpress/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="张鑫旭-鑫空间-鑫生活 » 小折腾：JavaScript与元素间的抛物线轨迹运动评论Feed" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/feed/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.zhangxinxu.com/wordpress/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.zhangxinxu.com/wordpress/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="我要上头条——鑫表情包1.0正式发布" href="http://www.zhangxinxu.com/wordpress/2013/12/%e9%91%ab%e8%a1%a8%e6%83%85%e5%8c%85/">
+<link rel="next" title="pointer-events:none提高页面滚动时候的绘制性能？" href="http://www.zhangxinxu.com/wordpress/2014/01/pointer-events-none-avoiding-unnecessary-paints/">
+<meta name="generator" content="WordPress 4.1.23">
+<link rel="canonical" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/">
+<link rel="shortlink" href="http://www.zhangxinxu.com/wordpress/?p=3855">
+<link href="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/bdsstyle.css" rel="stylesheet" type="text/css"></head>
+<body class="single single-post postid-3855 single-format-standard" style="position: static;"><iframe frameborder="0" style="display: none;" src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/saved_resource.html"></iframe><div id="bdshare_s" style="display: block;"><iframe id="bdsIfr" style="position:absolute;display:none;z-index:9999;" frameborder="0" src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/saved_resource(1).html"></iframe><div id="bdshare_l" style="display: none;"><div id="bdshare_l_c"><h6>分享到</h6><ul><li><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#" class="bds_mshare mshare">一键分享</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#" class="bds_qzone qqkj">QQ空间</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#" class="bds_tsina xlwb">新浪微博</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#" class="bds_bdysc bdysc">百度云收藏</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#" class="bds_renren rrw">人人网</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#" class="bds_tqq txwb">腾讯微博</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#" class="bds_bdxc bdxc">百度相册</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#" class="bds_kaixin001 kxw">开心网</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#" class="bds_tqf txpy">腾讯朋友</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#" class="bds_tieba bdtb">百度贴吧</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#" class="bds_douban db">豆瓣网</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#" class="bds_tsohu shwb">搜狐微博</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#" class="bds_bdhome bdhome">百度新首页</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#" class="bds_sqq sqq">QQ好友</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#" class="bds_thx thx">和讯微博</a></li><li><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#" class="bds_more">更多...</a></li></ul><p><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#" class="goWebsite">百度分享</a></p></div></div></div>
+<div id="page">
+<div id="header" role="banner">
+	<div id="headerimg">
+		<a href="http://www.zhangxinxu.com/" class="page_logo">张鑫旭-鑫空间-鑫生活</a>
+        <a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#searchform" id="iconSearch" class="icon-search"></a>
+		<div class="description">it's my whole life!</div>
+	</div>
+    <div id="menubar">
+<ul class="menu_tab">
+<li class="">
+<a href="http://www.zhangxinxu.com/" class="boss">网站首页</a>
+<a href="http://www.zhangxinxu.com/php/microCode.php">我的微码</a>
+<a href="http://www.zhangxinxu.com/php/advise.php">建议反馈</a>
+</li>
+<li class="on">
+<a class="boss" href="http://www.zhangxinxu.com/wordpress/">前端技术</a>
+<a href="http://www.zhangxinxu.com/wordpress/?cat=3">css</a>
+<a href="http://www.zhangxinxu.com/wordpress/?cat=5">js/jQuery</a>
+<a href="http://www.zhangxinxu.com/wordpress/category/html/">HTML</a>
+</li>
+<li class="">
+<a class="boss" href="http://www.zhangxinxu.com/life/">生活与创作</a>
+<a href="http://www.zhangxinxu.com/life/?cat=3">生活</a>
+<a href="http://www.zhangxinxu.com/life/?cat=5">散文</a>
+<a href="http://www.zhangxinxu.com/life/?cat=4">小说</a>
+</li>
+<li class="">
+<span class="boss">前端在线资源</span>
+<a href="http://www.zhangxinxu.com/css3/">CSS3参考</a>
+<a href="http://www.zhangxinxu.com/jq/api14/">jQuery1.4参考</a>
+</li>
+</ul><form method="get" id="searchform" action="http://www.zhangxinxu.com/wordpress/">
+<label class="hidden" for="s">Search for:</label>
+<div><input type="search" placeholder="" value="" name="s" id="s"><input type="submit" id="searchsubmit" data-value="Search" value="搜索">
+</div>
+</form>
+    </div>
+</div>
+<script type="text/javascript" async="" src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/ga.js"></script><script>
+var isSlideHide = false;
+if (window.localStorage) {
+	var slideHideTime = +localStorage.slideHideTime;
+	var slideNowTime = +new Date();
+	if (screen.width < 1600 && slideNowTime - slideHideTime < 1000*60*30) {
+		// 不足半小时
+		isSlideHide = true;
+		document.getElementById("page").className = "slide_hide";
+	} else if (slideHideTime > slideNowTime) {
+		localStorage.removeItem('slideHideTime');
+	}
+}
+</script>
+<div class="the_main">
+	<div id="content" class="widecolumn" role="main">
+    <div class="shink_rel"><a href="javascript:" id="shinkSlide" class="shink_a" title="收起右边栏">►</a></div>
+<script>if (window.localStorage && window.isSlideHide) {
+	(function() {
+		var eleShink = document.getElementById("shinkSlide");	
+		eleShink.title = "展开右边栏";
+		// 左箭头
+		eleShink.innerHTML = "&#x25c4;";
+	})();
+}</script>
+			<div class="post-3855 post type-post status-publish format-standard hentry category-js tag-505 tag-204 tag-892 tag-893 tag-894" id="post-3855">
+			<h2>小折腾：JavaScript与元素间的抛物线轨迹运动<span id="qrCode" class="qr_code"><img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/api.php"></span></h2>
+			<div class="entry">
+				<p style="margin-top:-5px;">
+					<small>
+						这篇文章发布于 2013年12月30日，星期一，20:40，归类于 <a href="http://www.zhangxinxu.com/wordpress/category/js/js%e5%ae%9e%e4%be%8b/" rel="category tag">js实例</a>。                        阅读 125034 次, 今日 6 次					</small>
+				</p>
+				<p class="link">by <a href="http://www.zhangxinxu.com/">zhangxinxu</a> from <a href="http://www.zhangxinxu.com/">http://www.zhangxinxu.com</a><br>
+本文地址：<a href="http://www.zhangxinxu.com/wordpress/?p=3855">http://www.zhangxinxu.com/wordpress/?p=3855</a></p>
+<h3>一、一剂预防针</h3>
+<p>好的体验应该是在用户试用之前就告知产品的一些特点、局限性等。类似裤子都脱了，才来一句：“我今天大姨妈巅峰期”的场景显然是会让兴致勃勃的用户受挫的。</p>
+<p>SO, 有必要在这里打个预防针，本文实际上没什么技术养料，就是昨晚因实际工作需要折腾的个东西，抛物线轨迹动画。如果你急着跟女神搞昧，下面的可以直接pass~~<br>
+<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/meiyangliao.gif" width="150" height="150" alt="没养料 鑫表情"></p>
+<p>不过这里有个有养料的东西，要跟大家分享下，当当当当，就是下面这个：<br>
+<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/2013-12-27_WP_003_s.jpg" width="500" height="281" alt="公司福利-猕猴桃" class="mt10"></p>
+<p>正宗曲江猕猴桃。公司福利，内部价，<strong style="color:#cd0000;">37元一箱</strong>，对！你没看错！就是37元！货真价实37元！足足有27个猕猴桃！各个多汁甜美，诱人无比！我周围同事几乎人人搞了一箱！是不是超划算哈！是不是很心动啊！是不是很羡慕哈！我厂类似有养料的福利还有很多哦！心动不行动，把妹永被动。偷偷告诉你哦，我们这边还差一个前端，我们<strong>ISUX上海</strong>可是我厂非常优秀的团队哦，还不简历速速飞来 – zhangxinxu@zhangxinxu.com . 不要担心，你简历再low我也会耐心回复你的，绝对不会石沉大海，重复过去你的不开心经历的哈！</p>
+<h3>二、动画与视觉引导</h3>
+<p>在页面上添加元素的位移动画，除了视觉效果（这是次要的），还有个作用就是视觉引导（重点）。举个大家可能见过的例子，选择商品的时候，我们希望商品飞到边缘或角落的购物车里，作用是：一来告知放在购物车里成功了，二来让用户知道购物车在哪里。</p>
+<p>但是，直来直去的运动你用我也用，不出彩啊，于是，就有想法，我抛物线过去，会不会有别样的风采。</p>
+<p>于是，下班后就抽时间折腾哈~~</p>
+<p>于是就有了今天这篇没什么养料的文章。</p>
+<p>哈，稍等，我先回家，夫人催了，回去吃个猕猴桃补充下养料，继续哈……</p>
+<h3>三、数学函数与动画轨迹</h3>
+<p><span class="s">//zxx: 翌日……</span></p>
+<p>常有云：“书到用时方恨少”。其实我觉得这有一部分责任在教者身上。好比高中时候，拼死拼活学各种函数曲线。我们为什么而学？很明显，为了考试！短视而功利的教育环境让老师一族的眼界也放在了考试成绩上。这也是为何中国学习应试考试一级棒，实践与创新吊车尾的原因。</p>
+<p>实际上，学习这些函数不是为了考试，而是为了日后的工作、解决生活实际问题。知道这些可以做什么，才能培养真正的兴趣，才能真正出类拔萃，学以致用。所以，您不必懊悔当初没好好学习什么的，是大环境限制了你当时的学习。</p>
+<p>就拿计算机图形动画举例，实际上，任何有规律的运动都是数学函数的呈现。</p>
+<p>试想下，如果数学老师可以把函数，与实际应用结合，比方说告诉喜欢玩游戏的同学：《剑灵》《英雄联盟》中那些绚烂的效果都是这里的抛物线啊重力啊等一干函数实现的。要是你们对游戏感兴趣，从事游戏相关的工作，这些函数是要牢牢掌握的哦！这种教育要比“你不好好学习，考个好成绩，找个好工作”有用多了。如果再能手把手辅导出什么不一样的成果——小装置，或者小游戏之类。我擦，那还不上天了！这个娃未来不是精英也是奇葩！</p>
+<p>哈，讲正经的。</p>
+<p>要让页面元素抛物线运行，很简单。套用抛物线函数即可。公式如下：</p>
+<div class="zxx_code">
+<pre>y = a*x*x + b*x + c</pre>
+</div>
+<p><code>(x, y)</code>就是点坐标，在网页上可以理解为相对于页面左上角的偏移像素大小。</p>
+<p>然后，套用求参，即可得到当前位置的抛物线函数啦！当然，实际操作不是键盘啪啪几个文字这么简单。</p>
+<h3>四、抛物线函数求解</h3>
+<p><span class="s">//zxx: 如果本段内容勾起你过去那段惨绝人寰的回忆，我这里先说声抱歉！ – 搞咩纳塞~</span></p>
+<p>现在，我们的任务变成了求解：<code>a</code>, <code>b</code>, <code>c</code>三个参数。</p>
+<p><code>3</code>个参数需要<code>3</code>个条件才能完全求解。</p>
+<p>由于我们要实现元素A到元素B的抛物线运动，因此，我们可以指定两个点的坐标位置，也就是知道了<code>2</code>个条件，那第<code>3</code>个条件呢？</p>
+<p>了解抛物线函数的同学应该知道，<strong>a</strong>可以近似理解为弧度，曲率。在我们实现效果的时候，这个是应该要可控的。——你总不可能把元素抛到天宫号上再掉下来吧。在网页上，一般都是起伏不大的抛物线（否则会出屏幕之外）。</p>
+<p>因此，我们可以把<strong>a</strong>作为一个参数常量。</p>
+<p>于是，我们任务就变成了，已知参数<code>a</code>，以及两个点的坐标，求该抛物线函数。</p>
+<p>哈，事情就简单多了。</p>
+<div class="zxx_code">
+<pre>y = a*x*x + b*x + c
+↓
+y1 = a * x1*x1 + b*x1 + c;
+y2 = a * x2*x2 + b*x2 + c;
+↓
+a已知，求b, c
+</pre>
+</div>
+<p>为了简化我们的计算求解，以及与我们高中时候的函数坐标匹配，我们可以以移动元素的初始位置作为坐标轴的中心（网页默认的坐标系左上角是中心，<code>x</code>轴向右，<code>y</code>轴向下，与高中的坐标轴不一样）。如下链接对应demo所示。</p>
+<p>您可以狠狠地点击这里：<a class="a_link" href="http://www.zhangxinxu.com/study/201312/js-parabola.html" target="_blank">元素抛物线运动demo</a></p>
+<p>demo页面中，圆形的小球球就是要运动的元素；椭圆的大便池就是小球球运动的目的地，其默认开始的坐标如下所示：<br>
+<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/2013-12-29_220036.png" width="579" height="422" alt="符合高中数学的坐标系" class="alignnone"></p>
+<p>也就是，我们限定了抛物线经过中心点<code>(0, 0)</code>, 代入<code>y1 = a * x1*x1 + b*x1 + c</code>可以得到<code>c = 0</code>, 于是<code>b = (y2+ a*x2*x2) / x2</code>, 带入大便池元素的坐标，就可以计算出<code>b</code>的大小，于是，抛物线函数就出来了。</p>
+<p>注意，这里“大便池元素的坐标”是相对于小球球的相对坐标，而不是页面左上角。</p>
+<p>有了抛物线函数，我们就有了小球球运动的轨迹了。</p>
+<h3>五、demo演示及说明</h3>
+<p>demo演示页面就是上面<a class="a_link" href="http://www.zhangxinxu.com/study/201312/js-parabola.html" target="_blank">提前曝光的链接地址</a>啦！</p>
+<p>1. 点击页面的任意位置，都会触发小球球奔向大便池的抛物线运动。<br>
+2. 拖动大便池到页面的任意位置，也会触发小球球义无反顾奔向大便池的效果。</p>
+<p>demo页面的这个抛物线运动基本上是个独立的JS方法，代码如下：</p>
+<div class="zxx_code">
+<pre>var funParabola=function(d,t,g){var i={speed:166.67,curvature:0.001,progress:function(){},complete:function(){}};var p={};g=g||{};for(var v in i){p[v]=g[v]||i[v]}var u={mark:function(){return this},position:function(){return this},move:function(){return this},init:function(){return this}};var e="margin",r=document.createElement("div");if("oninput" in r){["","ms","webkit"].forEach(function(b){var a=b+(b?"T":"t")+"ransform";if(a in r.style){e=a}})}var s=p.curvature,q=0,o=0;var k=true;if(d&amp;&amp;t&amp;&amp;d.nodeType==1&amp;&amp;t.nodeType==1){var n={},j={};var h={},m={};var f={},l={};u.mark=function(){if(k==false){return this}if(typeof f.x=="undefined"){this.position()}d.setAttribute("data-center",[f.x,f.y].join());t.setAttribute("data-center",[l.x,l.y].join());return this};u.position=function(){if(k==false){return this}var b=document.documentElement.scrollLeft||document.body.scrollLeft,a=document.documentElement.scrollTop||document.body.scrollTop;if(e=="margin"){d.style.marginLeft=d.style.marginTop="0px"}else{d.style[e]="translate(0, 0)"}n=d.getBoundingClientRect();j=t.getBoundingClientRect();h={x:n.left+(n.right-n.left)/2+b,y:n.top+(n.bottom-n.top)/2+a};m={x:j.left+(j.right-j.left)/2+b,y:j.top+(j.bottom-j.top)/2+a};f={x:0,y:0};l={x:-1*(h.x-m.x),y:-1*(h.y-m.y)};q=(l.y-s*l.x*l.x)/l.x;return this};u.move=function(){if(k==false){return this}var a=0,b=l.x&gt;0?1:-1;var c=function(){var z=2*s*a+q;a=a+b*Math.sqrt(p.speed/(z*z+1));if((b==1&amp;&amp;a&gt;l.x)||(b==-1&amp;&amp;a&lt;l.x)){a=l.x}var w=a,A=s*w*w+q*w;d.setAttribute("data-center",[Math.round(w),Math.round(A)].join());if(e=="margin"){d.style.marginLeft=w+"px";d.style.marginTop=A+"px"}else{d.style[e]="translate("+[w+"px",A+"px"].join()+")"}if(a!==l.x){p.progress(w,A);window.requestAnimationFrame(c)}else{p.complete();k=true}};window.requestAnimationFrame(c);k=false;return this};u.init=function(){this.position().mark().move()}}return u};(function(){var b=0;var c=["webkit","moz"];for(var a=0;a&lt;c.length&amp;&amp;!window.requestAnimationFrame;++a){window.requestAnimationFrame=window[c[a]+"RequestAnimationFrame"];window.cancelAnimationFrame=window[c[a]+"CancelAnimationFrame"]||window[c[a]+"CancelRequestAnimationFrame"]}if(!window.requestAnimationFrame){window.requestAnimationFrame=function(h,e){var d=new Date().getTime();var f=Math.max(0,16.7-(d-b));var g=window.setTimeout(function(){h(d+f)},f);b=d+f;return g}}if(!window.cancelAnimationFrame){window.cancelAnimationFrame=function(d){clearTimeout(d)}}}());</pre>
+</div>
+<blockquote><p>//zxx: 为节约文章篇幅，这里放的是压缩后的代码。如果您对实现感兴趣，可以demo页面右键的源代码是非压缩版本，含有非常多的注释。或者使用这个JS文件：<a href="http://www.zhangxinxu.com/study/201312/parabola.js" target="_blank">parabola.js</a></p></blockquote>
+<p>该抛物线方法名为<code>funParabola</code>，您可以根据自己的喜好修改，参数以及基本使用如下：</p>
+<div class="zxx_code">
+<pre>var myParabola = funParabola(element, target, options);</pre>
+</div>
+<p><strong>关于myParabola:</strong><br>
+直接执行<code>funParabola</code>方法是不会产生运动的。因为，实际上<code>funParabola</code>执行返回的是一个对象。包含如下四个方法：</p>
+<ol>
+<li><code>mark</code> 在目标元素以及移动元素上通过<code>data-center</code>自定义属性标记当前的中心坐标，如<code>-234, -345</code>. 此方法主要用在demo中，方便测试与预览用的。实际可能用途不大。</li>
+<li><code>position</code> 重新获取元素的位置。在元素相对位置改变的时候，此方法很有用。否则会出现计算误差的情况。例如，页面布局是自适应或者响应式的，浏览器宽度变小了，两元素之间的距离变化了，此时需要执行下<code>position</code>，存储新的坐标位置。</li>
+<li><code>move</code> 触发抛物线运动。</li>
+<li><code>init</code> 初始化方法。实际上就是连续调用<code>position</code>, <code>mark</code>, <code>move</code>3个方法。</li>
+</ol>
+<p>demo点击页面任意位置触发抛物线运动就是这么触发的：</p>
+<div class="zxx_code">
+<pre><span style="color:green;">/* 元素 */</span>
+var element = document.getElementById("element"), 
+    target = document.getElementById("target");
+<span style="color:green;">// 抛物线元素的的位置标记</span>
+var parabola = funParabola(element, target).mark();
+<span style="color:green;">// 抛物线运动的触发</span>
+document.body.onclick = function() {
+    element.style.marginLeft = "0px";
+    element.style.marginTop = "0px";
+    <span style="color:#cd0000;">parabola.init();</span>
+};</pre>
+</div>
+<p><strong>参数说明：</strong></p>
+<ul>
+<li><code>element</code>表示移动的元素，例如demo中的小球球。原生DOM节点</li>
+<li><code>target</code>表示目标元素。例如demo中的椭圆形的大便池。原生DOM节点</li>
+<li><code>options</code>为可选参数。各个API名称以及含义如下：
+<ul>
+<li><code>speed</code> 表示每帧移动的像素大小，每帧（对于大部分显示屏）大约16~17毫秒。默认大小是166.67。也就是默认<code>10px/ms</code>.</li>
+<li><code>curvature</code> 可以近似理解为抛物线的开头大小，也就是曲率。正数表示开口向下。默认大小是<code>0.001</code>. 数值越大，开头越小，弧度越高。因为web页面动辄大小几百像素，因此，曲率值较小。</li>
+<li><code>progress</code> 表示抛物线运动过程中的回调，支持两个参数，<code>x</code>, <code>y</code>，表示当前的坐标，您可以根据这些坐标值做一些特殊的处理。</li>
+<li><code>complete</code> 表示抛物线运动结束后的回调。</li>
+</ul>
+</li>
+</ul>
+<p><strong>其他说明：</strong></p>
+<ol>
+<li>可选参数<code>speed</code>不是指<code>x</code>轴的位移，也不是<code>y</code>轴位移，而是抛物线特定坐标的切线距离。利用切线公式：<code>y'=2ax+b</code>就可以计算出<code>x</code>轴这一帧应该移动的距离。形成奔向目的地的运动效果。</li>
+<li><code>funParabola</code>方法不依赖任何JS框架。您可以大胆使用。对了，<code>funParabola</code>使用了<code>requestAnimationFrame</code>方法。关于<code>requestAnimationFrame</code>身世、工作等私密信息可以参考我之前的“<a href="http://www.zhangxinxu.com/wordpress/?p=3695">CSS3动画那么强，requestAnimationFrame还有毛线用？</a>”一文。上面压缩的JS包含了<code>requestAnimationFrame</code>相关的兼容处理，因此IE6浏览器也是可以使用滴！
+<p>如果您使用的是demo源代码中的<code>funParabola</code>方法。如果您想低版本IE浏览器也有效果，需要再调用后面这个JS: <a href="http://www.zhangxinxu.com/study/201309/requestAnimationFrame.js" target="_blank">requestAnimationFrame.js</a>, 很少量的JS代码，主要做兼容处理的。因此，您可以可以直接拷贝出来。</p>
+<p>当然，最偷懒的方法是直接使用<a href="http://www.zhangxinxu.com/study/201312/parabola.js" target="_blank">parabola.js</a>或者压缩版<a href="http://www.zhangxinxu.com/study/201312/parabola-min.js" target="_blank">parabola-min.js</a>. 建议您拷贝到本地使用，尽量不要直接我站点外链地址。一旦外链请求超过我的忍受程度，我会加上这么一句JS：</p>
+<div class="zxx_code">
+<pre>ddocument.body.insertAdjacentHTML("afterBegin", '&lt;a href="ooxxooxxooxxooxx-huluwa.mp4"&gt;老板和秘书的激情战斗720x480.mp4&lt;/a&gt;');</pre>
+</div>
+<p>大家可以自己斟酌下~</p></li>
+</ol>
+<h3>六、实际应用示意</h3>
+<p>概念作品会让人眼前一亮，但只有实物产品才会让人怦然心动。因此，附上一个符合实际应用场景的例子，即开始提到的“商品飞到购物车”的效果。自然，借助上面折腾的<code>funParabola</code>方法。</p>
+<p>您可以狠狠地点击这里：<a class="a_link" href="http://www.zhangxinxu.com/study/201312/js-parabola-shopping.html" target="_blank">商品抛物线飞到购物车效果demo</a></p>
+<p>Demo页面采用的是某猫某商品页面。原本的加入购物车效果也是很精致的——移动到购物车上（直线），然后落下（含高度变化）。<span class="s">//zxx: 您可以自己打开一个商品详细页感受下。</span></p>
+<p>这里，则改成了抛物线效果。</p>
+<p>点击demo两个“加入购物车”按钮，就可以看到抛物线落下的效果了。</p>
+<p><img width="380" height="168" alt="加入购物车按钮 张鑫旭-鑫空间-鑫生活" class="alignnone" src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/2013-12-30_200602.png"></p>
+<p><img width="268" height="150" alt="加入购物车按钮 张鑫旭-鑫空间-鑫生活" class="alignnone" src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/2013-12-30_200613.png"></p>
+<p><img width="599" height="483" alt="商品抛物线进入购物车的效果截图 张鑫旭-鑫空间-鑫生活" class="alignnone" src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/2013-12-30_201327.png"></p>
+<p>面向实际使用，实际上需要更多的细节处理。例如，接近购物车的时候，购物车是否应该有动作。进入购物车，购物车是否需要抖一下，表示我吃进去商品了，我很得瑟！等~</p>
+<h3>七、其他函数</h3>
+<p>举一反三，触类旁通。如果你想实现其他的运动轨迹效果，例如，双曲线，或者椭圆运动。都是可以借助数学函数，按照上面抛物线实现的思路。稍微折腾折腾，效果就会出来了。</p>
+<p>这些其实都是简单的动画效果。您可能会觉得作用有限。实际上，您所见过的很多炫得掉渣子的效果都是由这个基本动画效果演变或叠加出来的。如何个演变以及叠加，这是需要技巧的。这又属于另外一个方向的知识了。</p>
+<p>如果您对动画相关的诸多算法或技巧很在行，您也可以成为很多企业抢手的香饽饽。</p>
+<h3>八、缓动与速度</h3>
+<p>之前有介绍过<a href="https://github.com/zhangxinxu/Tween/blob/master/tween.js" target="_blank">缓动的一些算法</a>。可以让动画速度先快后慢，或者先慢后快，或者弹弹弹。虽然缓动本质上也是曲线。但是，与这里的抛物线函数曲线还是不一样的。</p>
+<p>缓动的变量单位是时间；而这里抛物线效果的变量单位是像素。</p>
+<p>因此，缓动改变的是速度；这里改变的则是运动轨迹。</p>
+<p>但是，相同的是，他们绘制的曲线的模样可以是类似的。也就是，他们都用到了数学。</p>
+<p>小时候，老师的嘴巴里经常会蹦出这么句话：“学好数理化，走遍天下都不怕！”</p>
+<p>现在明白，真的是很有道理的哈！</p>
+<p>实际上，更有道理的是后面半句：“除非你有一个好爸爸！”</p>
+<p>太深刻了！</p>
+<h3>九、贝塞尔曲线与任意轨迹</h3>
+<p>对于有规律的轨迹，我们可以套用数学函数。如果是没有规律的呢？比方说，我想让汽车像喝醉了酒一样曲线运动，怎么办？</p>
+<p>可能就需要借助贝塞尔曲线绘制了。</p>
+<p>借助SVG或者canvas.</p>
+<p>要说SVG和canvas……</p>
+<p>额~~一瞬间，我的大脑像高速服务区的大便池一样堵住了，这SVG以及canvas相关知识点超多，实属超大话题为避免营养过盛，消化不良，相关内容后面一点一点和大家分享。</p>
+<p>本文至此为止，感谢大家能够阅读至此！</p>
+<p>一般而言，搓文后面会是大作，尽请期待！</p>
+<p>欢迎交流！</p>
+<p class="link" style="display: none;">本文为原创文章，会经常更新知识点以及修正一些错误，因此转载请保留原出处，方便溯源，避免陈旧错误知识的误导，同时有更好的阅读体验。<br>
+本文地址：<a href="http://www.zhangxinxu.com/wordpress/?p=3855">http://www.zhangxinxu.com/wordpress/?p=3855</a></p><div class="link">4个月出库2万册，<a href="http://www.cssworld.cn/" target="_blank">《CSS世界》</a>签名版独家发售，<a href="javascript:" onclick="this.parentNode.style.display=&#39;none&#39;;this.parentNode.nextSibling.style.display=&#39;&#39;;">点击显示购买码</a></div><div class="mybook-intro" style="display:none;" title="了解本书更多信息"><a href="http://www.cssworld.cn/" target="_blank"></a></div>
+<p>（本篇完）<span class="ins_txt">// 想要打赏？点击<a href="javascript:" id="alipayA" title="点击显示二维码">这里</a>。有话要说？点击<a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#comment" title="点击定位到评论">这里</a>。</span></p>
+<div id="daITxz2" class="da_article da_bottom da_for_mobile">
+        <div class="da_fix_bar da_fix_bar_4">
+            <span class="ad_fix_title">想高薪入职阿里？</span>
+            <a href="javascript:" class="da_fix_close jsFC" title="不敢兴趣">×</a>
+        </div>
+        <a href="http://www.zhufengpeixun.cn/main/index.html?ref=zhangxinxu" target="_blank" class="da_bottom_ht" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;ZHUFENG&#39;, &#39;click&#39;, &#39;Not float&#39;]);"></a>      
+    </div><div class="navigation">
+                    <div class="alignleft">« <a href="http://www.zhangxinxu.com/wordpress/2013/12/%e9%91%ab%e8%a1%a8%e6%83%85%e5%8c%85/" rel="prev">我要上头条——鑫表情包1.0正式发布</a></div>
+                    <div class="alignright"><a href="http://www.zhangxinxu.com/wordpress/2014/01/pointer-events-none-avoiding-unnecessary-paints/" rel="next">pointer-events:none提高页面滚动时候的绘制性能？</a> »</div>
+                </div><div class="similarity"><div class="similar_title">相关文章</div><ul><li><a href="http://www.zhangxinxu.com/wordpress/2017/03/canvas-2d-cool-affect-skills-technology/">canvas 2D炫酷动效的实现套路和需要的技术积累</a> (0.944)</li><li><a href="http://www.zhangxinxu.com/wordpress/2016/12/how-use-tween-js-animation-easing/">如何使用Tween.js各类原生动画运动缓动算法</a> (0.266)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/10/%e7%bf%bb%e8%af%91-%e8%a7%a3%e9%87%8ajavascript%e7%9a%84%e2%80%9c%e9%a2%84%e8%a7%a3%e6%9e%90%e7%bd%ae%e9%a1%b6%e8%a7%a3%e6%9e%90%e2%80%9d/">翻译 - 解释JavaScript的“预解析(置顶解析)”</a> (0.210)</li><li><a href="http://www.zhangxinxu.com/wordpress/2010/10/%e7%bf%bb%e8%af%91-%e9%ab%98%e8%b4%a8%e9%87%8fjavascript%e4%bb%a3%e7%a0%81%e4%b9%a6%e5%86%99%e5%9f%ba%e6%9c%ac%e8%a6%81%e7%82%b9/">翻译-高质量JavaScript代码书写基本要点</a> (0.210)</li><li><a href="http://www.zhangxinxu.com/wordpress/2011/06/javascript%e6%9c%89%e5%85%b3%e7%9a%8410%e4%b8%aa%e6%80%aa%e7%99%96%e5%92%8c%e7%a7%98%e5%af%86/">翻编-JavaScript有关的10个怪癖和秘密</a> (0.210)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/02/js-currying/">JS中的柯里化(currying)</a> (0.210)</li><li><a href="http://www.zhangxinxu.com/wordpress/2009/08/jquery%e4%b9%8b%e5%9b%be%e7%89%87%e5%b7%a6%e5%8f%b3%e5%88%87%e6%8d%a2%e5%8a%a8%e7%94%bb%e6%95%88%e6%9e%9c/">jquery之图片左右切换动画效果</a> (0.056)</li><li><a href="http://www.zhangxinxu.com/wordpress/2009/10/javascript%e5%ae%9e%e7%8e%b0%e6%96%b0%e6%b5%aa%e5%be%ae%e5%8d%9a%e6%96%87%e5%ad%97%e6%94%be%e5%a4%a7%e6%98%be%e7%a4%ba%e5%8a%a8%e7%94%bb%e6%95%88%e6%9e%9c/">JavaScript实现新浪微博文字放大显示动画效果</a> (0.056)</li><li><a href="http://www.zhangxinxu.com/wordpress/2009/12/jquery-%e7%81%ab%e7%84%b0%e7%81%af%e6%95%88%e6%9e%9c%e5%af%bc%e8%88%aa%e8%8f%9c%e5%8d%95/">jQuery-火焰灯效果导航菜单</a> (0.056)</li><li><a href="http://www.zhangxinxu.com/wordpress/2009/12/jquery-slidetoggle%e4%bd%bf%e7%94%a8%e5%ae%9e%e4%be%8b%e4%b9%8b%e5%9e%82%e7%9b%b4%e4%b8%8b%e6%8b%89%e8%8f%9c%e5%8d%95/">jQuery之使用slideToggle实现垂直下拉菜单</a> (0.056)</li><li><a href="http://www.zhangxinxu.com/wordpress/2013/01/flash-photoshop-make-gif-cartoon/">前端设计必会技能-gif动画图片制作</a> (RANDOM - 0.056)</li></ul></div><!-- Tag -->                
+				<div class="wp_share_box">
+                	<!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+<span class="bds_more">分享到：</span>
+<a class="bds_tsina" title="分享到新浪微博" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#"></a>
+<a class="bds_qzone" title="分享到QQ空间" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#"></a>
+<a class="bds_tqq" title="分享到腾讯微博" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#"></a>
+<a class="bds_t163" title="分享到网易微博" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#"></a>
+<a class="bds_douban" title="分享到豆瓣网" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#"></a>
+<a class="bds_tsohu" title="分享到搜狐微博" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#"></a>
+<a class="shareCount" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#" title="累计分享13次">13</a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=1954626" src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/bds_s_v2.js"></script>
+
+<script type="text/javascript">
+if (document.querySelector) {
+var navigation = document.querySelector('.navigation');
+var similarity = document.querySelector('.similarity');
+if (similarity && navigation) {
+	navigation.parentNode.insertBefore(navigation, similarity);
+}
+}
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+<!-- Baidu Button END -->
+                </div>
+								<div class="postmetadata alt">
+											<span class="post_tag">标签： <a href="http://www.zhangxinxu.com/wordpress/tag/%e5%87%bd%e6%95%b0/" rel="tag">函数</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e5%8a%a8%e7%94%bb/" rel="tag">动画</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e6%8a%9b%e7%89%a9%e7%ba%bf/" rel="tag">抛物线</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e6%95%b0%e5%ad%a6/" rel="tag">数学</a>, <a href="http://www.zhangxinxu.com/wordpress/tag/%e8%a7%86%e8%a7%89%e5%bc%95%e5%af%bc/" rel="tag">视觉引导</a></span>				</div>
+				
+			</div>
+		</div>
+
+        <style>
+.da_for_mobile{margin-top:10px;}
+.da_bottom_w,.da_bottom_ht,.da_bottom_n,.da_bottom_y{display:block;width:728px;height:90px;max-width:100%;background:no-repeat center;background-size:contain;}
+.da_bottom_w{background-image:url(//image.zhangxinxu.com/image/blog/201606/zj1.png);}
+.da_bottom_ht{background-image:url(//image.zhangxinxu.com/image/blog/201801/zf728x90.png);}
+.da_bottom_n{background-image:url(//image.zhangxinxu.com/image/blog/201709/mf-728X90-01.png);}
+.da_bottom_ht:after{visibility:hidden;}
+.da_article{position:absolute;visibility:hidden;}
+p+.da_article,.navigation+.da_article{margin:16px 0;position:static;visibility:visible;}
+.da_col2_li{display:inline-block;max-width:calc(50% - 4px);vertical-align:bottom;}
+.da_col2_li + .da_col2_li{margin-left:8px;}
+.da_bottom_1{background:url(//image.zhangxinxu.com/image/blog/201711/mv728x90.jpg) no-repeat center;background-size:100%;}
+.da_bottom_2{background:url(//image.zhangxinxu.com/image/blog/201805/xiuzhen-pc.jpg) no-repeat center;background-size:100%; box-shadow: inset 0 0 0 1px #332CA9;}
+.da_fix_bar{overflow:hidden;color:#fff;line-height:20px;display:none;}
+.ad_fix_title{background:#C81624;padding:2px 15px 1px;font-size:14px;float:left;}
+.da_fix_close{width:20px;height:20px;background:#C81624;color:#fff;text-decoration:none;text-align:center;float:right;}
+.da_fix_close:hover{color:#fff;text-decoration:none;}
+.da_zf .ad_fix_title,.da_zf .da_fix_close{background:#090a9a;}
+.da_ym .ad_fix_title,.da_ym .da_fix_close{background:#1F152D;}
+.da_ht .ad_fix_title,.da_ht .da_fix_close{background:#332CA9;}
+.da_fix_bar_4 .ad_fix_title,.da_fix_bar_4 .da_fix_close{background:#3492EB;}
+body > .da_bottom {position:fixed;left:13px;bottom:-90px;margin:0;-webkit-animation:adUp .5s .3s both;animation:adUp .5s .3s both;transition:bottom .25s;visibility:visible;}
+body > .da_bottom .da_fix_bar {display:block;}
+@media all and (max-width:640px) {
+.da_bottom_w {width:auto;background:#C81624 url(//ww1.sinaimg.cn/mw690/4b4d632fgw1f3snmkkp9lj208c08c3z4.jpg) no-repeat center;text-align:center;background-size:contain;}
+.da_col2 .da_for_mobile,.da_zf_x{display:inline-block;width:48%;overflow:hidden;}
+.da_col2_li{display:block;max-width:none;}
+.da_col2 .da_article{position:static;visibility:visible;background-color:#079bff;}
+
+.da_col2{font-size:0;text-align:justify;}
+.da_col2:after{content:'';display:inline-block;width:100%;}
+.da_col2_li + .da_col2_li{margin-left:0;display:block;}
+.da_bottom_n,.da_bottom_y{width:auto;background-size:100% 100%;background-repeat:no-repeat;}
+.da_bottom_w,.da_bottom_ht,.da_bottom_n,.da_bottom_y{height:150px;height:calc(0.48 * (100vw - 28px));}
+/*.da_bottom_y{height:75px;height:calc(0.24 * (100vw - 28px));}*/
+.da_bottom_ht{background-image:url(//image.zhangxinxu.com/image/blog/201801/zf300x300.png);}
+.da_bottom_n{background-image:url(//image.zhangxinxu.com/image/blog/201709/300X300-mf-01.png);}
+.da_bottom_1{background-image:url(//image.zhangxinxu.com/image/blog/201711/mv300X300.jpg);}
+.da_bottom_2{background-image:url(//image.zhangxinxu.com/image/blog/201805/xiuzhen-m.jpg);}
+.da_yd{display:none;}
+}
+</style>
+<h3 class="da_title">赞助商推荐<span class="sup_span">(<a href="http://www.zhangxinxu.com/sp/support.html" target="_blank">我也要赞助</a>)</span>：</h3>
+<div class="da_col2" style="overflow: hidden;">
+	<div id="daMW" class="da_for_mobile da_bottom">
+        <!-- 爱前端 -->
+        <div class="da_fix_bar da_ym">
+            <span class="ad_fix_title">想学到点真东西？</span>
+            <a href="javascript:" class="da_fix_close jsFC" title="不敢兴趣">×</a>
+        </div>
+        <a href="https://miaov.com/?zxx" target="_blank" class="da_bottom_ht da_bottom_1" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;MWAD&#39;, &#39;click&#39;, &#39;Not float&#39;]);"></a>
+    </div>
+    <div id="daYideng" class="da_bottom da_for_mobile">
+        <div class="da_fix_bar da_yd">
+            <span class="ad_fix_title">如果你有1~3年前端开发经验，不妨</span>
+            <a href="javascript:" class="da_fix_close jsFC" title="不敢兴趣">×</a>
+        </div>
+        <!-- <a href="http://www.yidengxuetang.com/recruit/" target="_blank" class="da_bottom_w" onClick="_gaq.push(['_trackEvent', 'YIDENG', 'click', 'Not float']);"></a> -->
+        <a href="https://ke.qq.com/course/222222" target="_blank" class="da_bottom_w" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;YIDENG&#39;, &#39;click&#39;, &#39;Not float&#39;]);"></a>        
+    </div>
+    
+    <!-- 技能树 -->
+    <div id="daTree" class="da_for_mobile da_bottom">
+        <div class="da_fix_bar da_ht">
+            <span class="ad_fix_title">想通过真实互联网项目成长自己？</span>
+            <a href="javascript:" class="da_fix_close jsFC" title="不敢兴趣">×</a>
+        </div>
+        <a href="http://www.jnshu.com/replay?status=1" target="_blank" class="da_bottom_y da_bottom_2" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;ITTree&#39;, &#39;click&#39;, &#39;Not float&#39;]);"></a>
+    </div>
+        <!-- <div id="daITxz" style="display: inline-block;margin-top:10px;margin-bottom:10px;">
+        <div style="height:180px; overflow:hidden;">
+            <img src="http://image.zhangxinxu.com/image/blog/201801/mybook.png" width="728" height="180" alt="">
+        </div>
+    </div> -->
+        </div>
+	﻿
+<div id="respond">
+<h3 id="comments" class="respond_title">发表评论（目前46条评论）</h3>
+<div id="cancel-comment-reply"> 
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#respond" style="display:none;">点击这里取消回复。</a></small>
+</div> 
+
+
+<form action="http://www.zhangxinxu.com/wordpress/wp-comments-post.php" method="post" id="commentform" novalidate="">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1" aria-required="true" required="">
+<label for="author"><small>名称 (必须)</small></label></p>
+
+<p><input type="email" name="email" id="email" value="" size="22" tabindex="2" aria-required="true" required="">
+<label for="email"><small>邮件地址(不会被公开) (必须)</small></label></p>
+
+<p><input type="url" name="url" id="url" value="" size="22" tabindex="3">
+<label for="url"><small>网站</small></label></p>
+
+
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" type="submit" id="submit" tabindex="5" value="提交评论"><span id="commRem" class="ml20" style="color:#cd0000;"></span>
+<input type="hidden" name="comment_post_ID" value="3855" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+ 
+</p>
+<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="65465b9c91"></p><p style="display: none;"></p><input type="hidden" id="onlyGoodCom" name="from" value="">
+<input type="hidden" id="ak_js" name="ak_js" value="1528252157455"></form>
+
+</div>
+
+
+<!-- You can start editing here. -->
+
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+
+	<ol class="commentlist">
+			<li class="comment even thread-even depth-1" id="comment-382773">
+				<div id="div-comment-382773" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/4ff32e4eaad2d374b4bc1ec81ce072ce.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">caicai</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-382773">
+			2018年04月8日 17:06</a>		</div>
+
+		<p>一直看你的文章，非常受用</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=382773#respond" onclick="return addComment.moveForm( &quot;div-comment-382773&quot;, &quot;382773&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给caicai">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-382772">
+				<div id="div-comment-382772" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/4ff32e4eaad2d374b4bc1ec81ce072ce.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">caicai</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-382772">
+			2018年04月8日 17:04</a>		</div>
+
+		<p>脑子现在一大堆抛物线</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=382772#respond" onclick="return addComment.moveForm( &quot;div-comment-382772&quot;, &quot;382772&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给caicai">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-379672">
+				<div id="div-comment-379672" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/a55ef63e15154fa7196bf466d61c1bf6.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">佳佳</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-379672">
+			2017年12月1日 14:51</a>		</div>
+
+		<p>谢谢大神~ 用到了公司的点餐系统上~哦hohohohoho~···</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=379672#respond" onclick="return addComment.moveForm( &quot;div-comment-379672&quot;, &quot;379672&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给佳佳">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-376519">
+				<div id="div-comment-376519" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/9e151275e8a3f1fecb476141db0a7c06.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://xn--lbr64b/" rel="external nofollow" class="url">2厄齐尔群二q</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-376519">
+			2017年11月7日 09:22</a>		</div>
+
+		<p>切切去</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=376519#respond" onclick="return addComment.moveForm( &quot;div-comment-376519&quot;, &quot;376519&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给2厄齐尔群二q">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-345383">
+				<div id="div-comment-345383" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/fc6fd81d6dd55b5621286e52eb40f5f2.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.cnblogs.com/zheng577564429/" rel="external nofollow" class="url">Rh九尾鱼</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-345383">
+			2017年01月17日 15:34</a>		</div>
+
+		<p>大体看懂了！可以转载吗？！</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=345383#respond" onclick="return addComment.moveForm( &quot;div-comment-345383&quot;, &quot;345383&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给Rh九尾鱼">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-334030">
+				<div id="div-comment-334030" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/04da1bdcbe5919099e7121da452f088c.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">雪剑无影</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-334030">
+			2016年11月7日 13:57</a>		</div>
+
+		<p>如果这个效果你能录成视频就更好了</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=334030#respond" onclick="return addComment.moveForm( &quot;div-comment-334030&quot;, &quot;334030&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给雪剑无影">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-321061">
+				<div id="div-comment-321061" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/034c04f60b25f20e47a0a8c5f28b891a.jpeg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">jon_shen</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-321061">
+			2016年06月27日 11:34</a>		</div>
+
+		<p>曾经我也是会抛物线的的，大概高中时候。。。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=321061#respond" onclick="return addComment.moveForm( &quot;div-comment-321061&quot;, &quot;321061&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给jon_shen">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-313176">
+				<div id="div-comment-313176" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/e416c6672be610223c93b780863e5fc1.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">炫海_神鹰</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-313176">
+			2016年03月11日 11:11</a>		</div>
+
+		<p>b = (y2+ a*x2*x2) / x2, 带入大便池元素的坐标，就可以计算出b的大小</p>
+<p>公式是不是写错啦？应该是 b = (y2- a*x2*x2) / x2,吧，y2-    不是y2+吧</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=313176#respond" onclick="return addComment.moveForm( &quot;div-comment-313176&quot;, &quot;313176&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给炫海_神鹰">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-311538">
+				<div id="div-comment-311538" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/94b6700f15828976f973c281adae9e52.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">拉拉啦</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-311538">
+			2016年01月16日 16:09</a>		</div>
+
+		<p>我想问一下 原地起跳的这个抛物线怎么搞</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=311538#respond" onclick="return addComment.moveForm( &quot;div-comment-311538&quot;, &quot;311538&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给拉拉啦">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-305006">
+				<div id="div-comment-305006" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/3b8e07aec14e3b1262093ef11ea93663.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">2713</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-305006">
+			2015年11月23日 10:47</a>		</div>
+
+		<p>x=0</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=305006#respond" onclick="return addComment.moveForm( &quot;div-comment-305006&quot;, &quot;305006&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给2713">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-303927">
+				<div id="div-comment-303927" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/584cd651526d5f36eb679295480e9b42.jpeg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">sky91</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-303927">
+			2015年11月13日 10:47</a>		</div>
+
+		<p>先恭维一下：看你的博客许久，获得不少知识，学到了很多，先感谢下。<br>
+然后，简单谈一下，我个人认为这个插件如果加以自动化的话会略好用。<br>
+花了一段时间简单应用了一下，如果有什么没注意的地方，原谅则个。<br>
+几点意见/优化：<br>
+1、超边界问题：<br>
+     当起点和终点都在屏幕偏顶部时（将demo中line:17 中bottom:0;改为top:0;），即会出现超边界问题，所以应该加个配置，抛物线的top点会超边界时，应将抛物线翻转。<br>
+     tmall的加入购物车也有这个问题，抛物线有一部分会被遮挡。<br>
+     诚然，可以通过改变curvature的值来“压扁”抛物线或者翻转抛物线，但curvature这个值的量级太小（我这改成-0.0005才有较好的弧度），或者改为曲率半径在量级上表现会更好？<br>
+     而且随着页面的上下滚动（当购物车icon为fixed，商品位置变化时），这个值肯定需要变化，不然依然会出现这种“超边界”问题。<br>
+     这个问题没想到什么解决方法，兹以为需要计算下直线距离和当前元素与屏幕边界的关系、对曲度curvature进行动态调整（包括翻转和增减）。<br>
+2、速度的自动计算：<br>
+     与其去设置速度，不如换成完成动作的时间，因为同样的速度，在距离不同时，加入到购物车的时间不同，会导致用户等待时间不同，（个人认为）体验的效果感觉略差。<br>
+     最明显的就是当一个网页由多个商品（类似于某东的首页楼层），而购物车icon位置在右边栏，在相同速度时，最左边商品加入到购物车的时间和最右边商品加入到购物车的时间相差较大。<br>
+     当然这样也有个问题，就是最右边商品加入到购物车的速度会明显很慢。所以可以设置速度和时间的关系（比如最小时间为3s，用于最右边商品的效果，而最大时间/最小速度为5s，由于最左边商品的效果，中间采取一个中间值，懒的时候直接设置一个区间，进行random），保持一个较为均衡的效果。<br>
+3、多动画效果并行：<br>
+     本文中第四部分的demo中，“小球球”作为移动的元素。而实例demo中，移动的元素是“#flyItem”。<br>
+     这样，使用这个插件的多数人需要先构造一个移动的元素，因为你不能把商品的原图给移没了；<br>
+     还有，包括tmall在内的商品的图片不只一个，当你选择另一个图片时，动画中“移动的元素”是需要变化的，如果是通过隐藏层元素来进行动画，需要写监听来切换“移动的元素”中的商品图片。<br>
+     更为关键的，当需要加入多个商品时，会触发“多动画”，很明显，原始的 funParabola不支持多个动画的同时触发。而且，因为“移动的元素”只有一个，所以也无法一次性并行多个动画。<br>
+     暂时想到的解决方案（应该算是正常人的逻辑？），在click事件触发时，将制定移动的元素clone，然后移动clone后的元素。当然，clone后的元素要进行一定的css修改，不然大多数商品的图片很大，移动起来的效果就比较。。。</p>
+<p>暂时想到这些问题，有什么说的不对的地方，欢迎斧正。再次，感谢！</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=303927#respond" onclick="return addComment.moveForm( &quot;div-comment-303927&quot;, &quot;303927&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给sky91">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-2" id="comment-320375">
+				<div id="div-comment-320375" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/47a9348399f695adf7e02e640b0422e6.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">andy</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-320375">
+			2016年06月16日 09:19</a>		</div>
+
+		<p>关于抛物线的切线，就是下面这段代码：<br>
+// 切线 y’=2ax+b<br>
+				var tangent = 2 * a * startx + b; // = y / x<br>
+				// y*y + x*x = speed<br>
+				// (tangent * x)^2 + x*x = speed<br>
+				// x = Math.sqr(speed / (tangent * tangent + 1));<br>
+				startx = startx + rate * Math.sqrt(params.speed / (tangent * tangent + 1));<br>
+能不能详细的讲解一下，因为高中数学学的不太好，自己也上网找了一些资料，但是还是看不太明白，谢谢了！</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=320375#respond" onclick="return addComment.moveForm( &quot;div-comment-320375&quot;, &quot;320375&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给andy">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-302353">
+				<div id="div-comment-302353" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/56390d5c068371edf0f76cdd44c65dfc.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/www.lampison.com" rel="external nofollow" class="url">榆钱斗斗</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-302353">
+			2015年10月30日 00:07</a>		</div>
+
+		<p>请问你的博客编辑器用的是什么啊？Windows Live Writer还是什么？</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=302353#respond" onclick="return addComment.moveForm( &quot;div-comment-302353&quot;, &quot;302353&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给榆钱斗斗">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-302781">
+				<div id="div-comment-302781" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/3e58242902fa8f33162f3f10df892c68.jpeg" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.zhangxinxu.com/" rel="external nofollow" class="url">张 鑫旭</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-302781">
+			2015年10月31日 20:03</a>		</div>
+
+		<p>@榆钱斗斗 wordpress自带</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=302781#respond" onclick="return addComment.moveForm( &quot;div-comment-302781&quot;, &quot;302781&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给张 鑫旭">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-296984">
+				<div id="div-comment-296984" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/d996d37c61278fa56d0b3b8298130562.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">neil</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-296984">
+			2015年09月23日 09:42</a>		</div>
+
+		<p>大神, 我还是不了解这地方的意思</p>
+<p>                // 切线 y’=2ax+b<br>
+                // y =  a*x*x + b*x + c;<br>
+                var tangent = a * startx * 2 + b; // = y / x</p>
+<p>                // y*y + x*x = speed<br>
+                // (tangent * x)^2 + x*x = speed<br>
+                // x = Math.sqr(speed / (tangent * tangent + 1));<br>
+                // 这里是每一步滚动的距离<br>
+                startx = startx + rate * Math.sqrt( params.speed / ( tangent * tangent + 1 ) );</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=296984#respond" onclick="return addComment.moveForm( &quot;div-comment-296984&quot;, &quot;296984&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给neil">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-2" id="comment-298344">
+				<div id="div-comment-298344" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/79f8a05856d04defd656088aeb308a97.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.csdn.net/" rel="external nofollow" class="url">thevenin</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-298344">
+			2015年09月28日 16:16</a>		</div>
+
+		<p>我对着快也是很不明白！</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=298344#respond" onclick="return addComment.moveForm( &quot;div-comment-298344&quot;, &quot;298344&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给thevenin">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even depth-2 parent" id="comment-308560">
+				<div id="div-comment-308560" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/6fec5f2953e039aee0d13b6950405fca.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">007</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-308560">
+			2015年12月20日 15:53</a>		</div>
+
+		<p>这里是把路径上的速度变换在横向 x 轴上速度，并加上 step</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=308560#respond" onclick="return addComment.moveForm( &quot;div-comment-308560&quot;, &quot;308560&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给007">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-3" id="comment-382764">
+				<div id="div-comment-382764" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/ab71197d85dac6d50343b8302722ddd2.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://gegeg/" rel="external nofollow" class="url">gg</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-382764">
+			2018年04月5日 02:01</a>		</div>
+
+		<p>y’ = 2ax + b  ==&gt; y=a*a*x*x + bx +C<br>
+∫(2ax+b) = a²x + bx +C 这个是微积分的知识</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=382764#respond" onclick="return addComment.moveForm( &quot;div-comment-382764&quot;, &quot;382764&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给gg">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even depth-2" id="comment-382352">
+				<div id="div-comment-382352" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/8eb50a03d1ae2091bfbaedb21d18de6c.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">siyuejiwang</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-382352">
+			2018年02月7日 13:20</a>		</div>
+
+		<p>其实就是勾股定理，每帧走的长度speed为直角三角形的斜边，两个直角边x，y分别对应x轴，Y轴的位移，两个直角边比例y/x就为正弦tan（角度值），而这个正弦值就等于切线的斜率，切线的斜率就是上面的y‘</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=382352#respond" onclick="return addComment.moveForm( &quot;div-comment-382352&quot;, &quot;382352&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给siyuejiwang">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-263138">
+				<div id="div-comment-263138" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/a91fa3a34e328b1a99e40e1dcb6f5123.jpeg" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://geekv.net/" rel="external nofollow" class="url">Running</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-263138">
+			2015年04月13日 16:32</a>		</div>
+
+		<p>原来抛物线还能这么用…一直觉得当年学习的东西怎么都没有用到…唉   too young too simple~<br>
+转载了</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=263138#respond" onclick="return addComment.moveForm( &quot;div-comment-263138&quot;, &quot;263138&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给Running">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-249030">
+				<div id="div-comment-249030" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/821cfb11a608c353f2a34624da681cc4.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">xni220</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-249030">
+			2015年03月17日 11:33</a>		</div>
+
+		<p>博主人才啊</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=249030#respond" onclick="return addComment.moveForm( &quot;div-comment-249030&quot;, &quot;249030&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给xni220">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-233081">
+				<div id="div-comment-233081" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/4913fa5c4d59502ff19c1650c4023200.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.uinav.cn/" rel="external nofollow" class="url">megasu</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-233081">
+			2015年02月11日 11:28</a>		</div>
+
+		<p>加入购物车例子的事件可以再完善些，点击第一个按钮时候，动画没执行完毕再点击第二个按钮，漂浮的商品缩略图会错位。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=233081#respond" onclick="return addComment.moveForm( &quot;div-comment-233081&quot;, &quot;233081&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给megasu">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-214297">
+				<div id="div-comment-214297" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/25830c833e1d8504af8a8cfcc355e9ca.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">acershan</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-214297">
+			2015年01月16日 14:09</a>		</div>
+
+		<p>大神，谷歌可以，火狐为什么不动，也不报错，JS渣渣，求赐教啊</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=214297#respond" onclick="return addComment.moveForm( &quot;div-comment-214297&quot;, &quot;214297&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给acershan">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-199518">
+				<div id="div-comment-199518" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/46e15a7de371bd6986a95de09b4dfb59.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">Hydra</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-199518">
+			2014年12月25日 14:20</a>		</div>
+
+		<p>博主你的幽默好难笑哦<br>
+不过还是膜拜支持一下高手</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=199518#respond" onclick="return addComment.moveForm( &quot;div-comment-199518&quot;, &quot;199518&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给Hydra">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-196487">
+				<div id="div-comment-196487" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/e8b882650cb50ed18d9b8c91f15b184c.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">amibug</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-196487">
+			2014年12月21日 10:55</a>		</div>
+
+		<p>参考tmall例子，写了一个demo: <a href="http://codepen.io/hzxs1990225/full/ogLaVp/" rel="nofollow">http://codepen.io/hzxs1990225/full/ogLaVp/</a><br>
+求张鑫旭大神的指点</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=196487#respond" onclick="return addComment.moveForm( &quot;div-comment-196487&quot;, &quot;196487&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给amibug">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-134579">
+				<div id="div-comment-134579" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/f9beda771e24abb63b05ee4c79ed3a10.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">小简</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-134579">
+			2014年09月29日 17:51</a>		</div>
+
+		<p>觉得很享受，对前端的一些细节描绘的那么淋漓尽致，这份热爱和执着，正是推进自己前进的动力，向牛人致敬。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=134579#respond" onclick="return addComment.moveForm( &quot;div-comment-134579&quot;, &quot;134579&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给小简">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-123634">
+				<div id="div-comment-123634" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/02199cc6e432190c1820d84e570f5285.png" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.lookcss.com/" rel="external nofollow" class="url">文艺青年</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-123634">
+			2014年09月4日 08:30</a>		</div>
+
+		<p>牛逼~</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=123634#respond" onclick="return addComment.moveForm( &quot;div-comment-123634&quot;, &quot;123634&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给文艺青年">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-121148">
+				<div id="div-comment-121148" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/e5f40bf8b8949cc60707e8174794e455.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">明明是小明</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-121148">
+			2014年08月28日 14:50</a>		</div>
+
+		<p>如果移动的小球#one在一个移动的物体上。position()无法调整位置</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=121148#respond" onclick="return addComment.moveForm( &quot;div-comment-121148&quot;, &quot;121148&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给明明是小明">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-79230">
+				<div id="div-comment-79230" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/cb250acc2bf4ba51ea6785fb536896f9.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://2.yangliulang.sinaapp.com/" rel="external nofollow" class="url">杨六郎</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-79230">
+			2014年05月27日 11:05</a>		</div>
+
+		<p>你好，用的你的这个东西，我是在移动端浏览器用的，IOS和Android自带的浏览器打开http://2.yangliulang.sinaapp.com/<br>
+当点击加号时会有加入菜单的效果，可是当滚动条往下滚动后在点击添加按钮时，就出现抛物线定位目标点问题，IOS没问题，Android里面有问题。麻烦大神能替我解决下啊，，拜托啦~~</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=79230#respond" onclick="return addComment.moveForm( &quot;div-comment-79230&quot;, &quot;79230&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给杨六郎">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-79241">
+				<div id="div-comment-79241" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/3e58242902fa8f33162f3f10df892c68.jpeg" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.zhangxinxu.com/" rel="external nofollow" class="url">张 鑫旭</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-79241">
+			2014年05月27日 11:28</a>		</div>
+
+		<p>@杨六郎 你好，恕我精力有限。这个都不能自己搞定，我真没办法了。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=79241#respond" onclick="return addComment.moveForm( &quot;div-comment-79241&quot;, &quot;79241&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给张 鑫旭">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-76836">
+				<div id="div-comment-76836" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/5fdf847f8fd0d4b2c534a9e27a22b67b.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">tracy</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-76836">
+			2014年05月19日 16:58</a>		</div>
+
+		<p>还有物理上的自由落体公式以及水平匀速运动公式的结合，模拟出来的运动似乎更像真实的运动轨迹</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=76836#respond" onclick="return addComment.moveForm( &quot;div-comment-76836&quot;, &quot;76836&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给tracy">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-61601">
+				<div id="div-comment-61601" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/0ba13eec67c66980d83256874c244ca3.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">steveyu</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-61601">
+			2014年03月1日 14:53</a>		</div>
+
+		<p>ieBetter.js和jQuery.js一起用的时候，ie6报“eventType” is undefined，大神怎么解决啊，我菜鸟，用你的抛物线正在做购物车，大神帮忙啊</p>
+<p>去掉这句话就可以了，为什么啊	global.addEventListener = function(eventType, funcHandle, useCapture) {<br>
+oDomExtend.addEventListener.call(global, eventType, funcHandle, useCapture);<br>
+};</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=61601#respond" onclick="return addComment.moveForm( &quot;div-comment-61601&quot;, &quot;61601&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给steveyu">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="comment-61615">
+				<div id="div-comment-61615" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/3e58242902fa8f33162f3f10df892c68.jpeg" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.zhangxinxu.com/" rel="external nofollow" class="url">张 鑫旭</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-61615">
+			2014年03月1日 18:23</a>		</div>
+
+		<p>@steveyu 我很奇怪，你既然使用了jQuery，那为何还要使用<a href="https://github.com/zhangxinxu/ieBetter.js" rel="nofollow">ieBetter.js</a>呢？抛物线效果的方法不依赖<a href="https://github.com/zhangxinxu/ieBetter.js" rel="nofollow">ieBetter.js</a>的，最后的Demo只是演示需要，您修改成jQuery的API即可！</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=61615#respond" onclick="return addComment.moveForm( &quot;div-comment-61615&quot;, &quot;61615&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给张 鑫旭">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-60354">
+				<div id="div-comment-60354" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/6eacfe3892aa9473d4d03b924d3c9ecf.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">xuan</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-60354">
+			2014年02月11日 21:34</a>		</div>
+
+		<p>startx = startx + rate * Math.sqrt(params.speed / (tangent * tangent + 1));</p>
+<p>这一句有点不懂呀</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=60354#respond" onclick="return addComment.moveForm( &quot;div-comment-60354&quot;, &quot;60354&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给xuan">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-57510">
+				<div id="div-comment-57510" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/af24d5eaf28df0623b2747ea615e2b85.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">可惜不是你</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-57510">
+			2014年01月16日 22:19</a>		</div>
+
+		<p>b = (y2+ a*x2*x2) / x2 ，难道我是算错了啊，我得出来的是  b = (y2—a*x2*x2) / x2;</p>
+<p>还有就是飞向购物车的那个元素要绝对定位，不知道固定定位可不可以;</p>
+<p>我在本地测试，用火狐26.0版本下报错： ReferenceError: event is not defined ;</p>
+<p>应该是遗漏了事件对象吧！谢谢你的文章，我今天正好在做购物车这个功能。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=57510#respond" onclick="return addComment.moveForm( &quot;div-comment-57510&quot;, &quot;57510&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给可惜不是你">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-56252">
+				<div id="div-comment-56252" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/4c30bca32204fa07fd28239ecc78171b.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">color</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-56252">
+			2014年01月9日 09:40</a>		</div>
+
+		<p>赞一个~<br>
+看了你的职位推荐<br>
+哈哈，人不在上海了<br>
+不然也投一个试试</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=56252#respond" onclick="return addComment.moveForm( &quot;div-comment-56252&quot;, &quot;56252&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给color">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-55315">
+				<div id="div-comment-55315" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/dec1297d014effa1ac8f04b19e1b037c.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">bean</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-55315">
+			2014年01月3日 09:47</a>		</div>
+
+		<p>如果我是产品经理或者是个会独立思考的前端仔，那么面对这样一个需求，我只会考虑支持css3, animation的浏览器， 什么？兼容ie678 ？ 见鬼去吧，用户如果还用着上一个年代的浏览器，活该不给那么炫的玩意给他玩。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=55315#respond" onclick="return addComment.moveForm( &quot;div-comment-55315&quot;, &quot;55315&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给bean">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-2" id="comment-61675">
+				<div id="div-comment-61675" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/6cbe5c97ba61f8278078a60e78b13d07.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">陈烁斌</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-61675">
+			2014年03月2日 11:33</a>		</div>
+
+		<p>有道理。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=61675#respond" onclick="return addComment.moveForm( &quot;div-comment-61675&quot;, &quot;61675&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给陈烁斌">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-55107">
+				<div id="div-comment-55107" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/9c8d8f1f6966a658181d2d7c164d24f1.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">jiel</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-55107">
+			2014年01月2日 11:00</a>		</div>
+
+		<p>给力 先回复在看</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=55107#respond" onclick="return addComment.moveForm( &quot;div-comment-55107&quot;, &quot;55107&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给jiel">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-54780">
+				<div id="div-comment-54780" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/ce3925205d7fd7b31287e400fa63203f.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">702017364</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-54780">
+			2013年12月31日 13:46</a>		</div>
+
+		<p>请问，做好一个好的前端要掌握什么，懂得什么。。。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=54780#respond" onclick="return addComment.moveForm( &quot;div-comment-54780&quot;, &quot;54780&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给702017364">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor even depth-2 parent" id="comment-54790">
+				<div id="div-comment-54790" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/3e58242902fa8f33162f3f10df892c68.jpeg" class="avatar avatar-32" height="32" width="32">			<cite class="fn"><a href="http://www.zhangxinxu.com/" rel="external nofollow" class="url">张 鑫旭</a></cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-54790">
+			2013年12月31日 14:59</a>		</div>
+
+		<p>@702017364 去知乎看看看，很多前辈有相关的分享。我个人觉得，好前端需要掌握的，跟好男人需要掌握的，本质上是类似的。</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=54790#respond" onclick="return addComment.moveForm( &quot;div-comment-54790&quot;, &quot;54790&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给张 鑫旭">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-3 parent" id="comment-54852">
+				<div id="div-comment-54852" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/a75b0548f16402bc99ba06caea54f814.jpeg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">Herrington Darkholme</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-54852">
+			2013年12月31日 23:25</a>		</div>
+
+		<p>怎么才能成为好♂男♂人呢！</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=54852#respond" onclick="return addComment.moveForm( &quot;div-comment-54852&quot;, &quot;54852&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给Herrington Darkholme">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-4" id="comment-59961">
+				<div id="div-comment-59961" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/81f5e6e7f15aff28cdcea9ac5651665b.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">让周飞</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-59961">
+			2014年02月7日 11:03</a>		</div>
+
+		<p>先成为好前端</p>
+
+		
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-54779">
+				<div id="div-comment-54779" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/edf225c35fdde313ef7e08355ab05cb4.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">八戒</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-54779">
+			2013年12月31日 13:43</a>		</div>
+
+		<p>难道我会说那个抛物线我看不懂吗？</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=54779#respond" onclick="return addComment.moveForm( &quot;div-comment-54779&quot;, &quot;54779&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给八戒">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-54748">
+				<div id="div-comment-54748" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/de9c1e4820874f5000e3fc7fdb7494f7.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">isaries</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-54748">
+			2013年12月31日 09:07</a>		</div>
+
+		<p>nice</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=54748#respond" onclick="return addComment.moveForm( &quot;div-comment-54748&quot;, &quot;54748&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给isaries">回复</a></div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-2" id="comment-288025">
+				<div id="div-comment-288025" class="comment-body">
+				<div class="comment-author vcard">
+			<img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/d045d722554825d73067c89ccba8b50a.jpg" class="avatar avatar-32" height="32" width="32">			<cite class="fn">麻雀</cite><span class="says">说道：</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%e5%85%83%e7%b4%a0-%e6%8a%9b%e7%89%a9%e7%ba%bf-%e8%bf%90%e5%8a%a8-%e5%8a%a8%e7%94%bb/comment-page-1/#comment-288025">
+			2015年08月28日 12:01</a>		</div>
+
+		<p>// 移动元素的中心点坐标<br>
+			centerElement = {<br>
+				x: rectElement.left + (rectElement.right – rectElement.left) / 2 + scrollLeft,<br>
+				y: rectElement.top + (rectElement.bottom – rectElement.top) / 2	+ scrollTop<br>
+			};<br>
+这部分求得的距离不是很懂。好像不是中心距离。比如窗口大小为600，移动元素left：400，right：150，然后求得中心x是250.不对哦！</p>
+
+		<div class="reply"><a class="comment-reply-link" href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/?replytocom=288025#respond" onclick="return addComment.moveForm( &quot;div-comment-288025&quot;, &quot;288025&quot;, &quot;respond&quot;, &quot;3855&quot; )" aria-label="回复给麻雀">回复</a></div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	</ol>
+
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+ 
+
+
+
+	
+	</div>
+</div>
+	<div id="sidebar" role="complementary">
+        <div id="zxx_intro" class="sldebar_out">
+            <div class="silebar_inner" itemscope="" itemtype="http://data-vocabulary.org/Person">
+                <img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/zxx_90_0824.jpg" itemprop="photo" class="zxx_head_image">
+                <div class="zxx_some_info">
+                    <p class="mb5"><span itemprop="name" class="fn">张鑫旭</span><sup><a itemprop="url" href="http://www.zhangxinxu.com/life/about/">more</a></sup>，09年<a href="http://www.hust.edu.cn/" target="_blank">华中科技大学</a>毕业，现<span itemprop="location">上海</span>，就职于<a href="https://www.yuewen.com/" itemprop="organization" target="_blank">阅文集团</a>，专注<span itemprop="role">web前端</span>偏前领域，钓鱼爱好者，著有<a href="http://www.cssworld.cn/" itemprop="work" target="_blank">《CSS世界》</a>。</p>
+                    <p>邮箱：<span style="font-family:arial;">zhangxinxu@zhangxinxu.com</span></p>
+                    <p>关注我：<a href="http://weibo.com/zhangxinxu" target="_blank" rel="nofollow">新浪微博</a> <a href="https://www.zhihu.com/people/iamzhangxinxu/activities" target="_blank" rel="nofollow">知乎</a></p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div id="topAdOut" class="sldebar_out top_da_out" style="display: block !important;">
+        	<a href="javascript:" id="slideA" class="slide_a">不滚动跟随</a>
+            <div class="top_da" style="display:block!important;">
+            	<div id="adSlideX" class="da_slide_x" style="display: block !important; left: 0px;">
+                    <div class="da_inner">
+                        <a href="https://ke.qq.com/course/222222" target="_blank" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;YIDENG&#39;, &#39;click&#39;, &#39;Top Ad&#39;]);" style="height:300px;background-image:url(//wx2.sinaimg.cn/mw690/4b4d632fly1flizw0c2cfj209c08cdhi.jpg);"></a>
+                    </div><div class="da_inner">
+                       	<a href="http://www.icketang.com/?zxxgg" target="_blank" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;AICHUANG&#39;, &#39;click&#39;, &#39;Top Ad&#39;]);" style="height:300px;background-image:url(//wx4.sinaimg.cn/mw690/4b4d632fgy1fpsc5k0vh1j209c08c75z.jpg);"></a>
+                    </div><div class="da_inner">
+                        <a href="https://miaov.com/?zxx" target="_blank" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;MWAD&#39;, &#39;click&#39;, &#39;Top Ad&#39;]);" style="height:300px;background-image:url(//wx2.sinaimg.cn/mw690/4b4d632fgy1flovpw3lb2j20io0go0xg.jpg);"></a>
+                    </div>
+                </div>
+                <!-- 索引 -->
+                <div id="adIndexX" class="da_index_x">
+                	<a href="javascript:" class="da_index_a active">1</a>
+                    <a href="javascript:" class="da_index_a">2</a>
+                    <a href="javascript:" class="da_index_a">3</a>
+                </div>
+            </div>
+        </div><script>if (window.location != window.parent.location) { window.parent.location = window.location; }
+var eleNarrowCol = document.querySelector('.narrowcolumn');
+if (eleNarrowCol) {
+	document.getElementById('slideA').innerHTML = '收起';
+	document.getElementById('topAdOut').className += ' open';
+}
+        </script>    	<div class="sldebar_out">
+            <div class="silebar_inner slide_list">
+                <ul>
+                    <li id="categories-4" class="widget widget_categories"><h2 class="widgettitle">文章分类</h2>		<ul>
+	<li class="cat-item cat-item-3"><a href="http://www.zhangxinxu.com/wordpress/category/css/">css相关</a> (253)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/">graphic相关</a> (56)
+<ul class="children">
+	<li class="cat-item cat-item-896"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/canvas-graphic/">canvas相关</a> (25)
+</li>
+	<li class="cat-item cat-item-895"><a href="http://www.zhangxinxu.com/wordpress/category/graphic/svg-graphic/">SVG相关</a> (30)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1097"><a href="http://www.zhangxinxu.com/wordpress/category/html/">HTML相关</a> (29)
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.zhangxinxu.com/wordpress/category/js/">js相关</a> (156)
+<ul class="children">
+	<li class="cat-item cat-item-60"><a href="http://www.zhangxinxu.com/wordpress/category/js/jquery-about/">jquery相关</a> (45)
+</li>
+	<li class="cat-item cat-item-180"><a href="http://www.zhangxinxu.com/wordpress/category/js/js%e5%ae%9e%e4%be%8b/">js实例</a> (89)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-648"><a href="http://www.zhangxinxu.com/wordpress/category/mobile/">mobile相关</a> (12)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.zhangxinxu.com/wordpress/category/ps/">ps相关</a> (13)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.zhangxinxu.com/wordpress/category/web/">web综合</a> (45)
+</li>
+	<li class="cat-item cat-item-198"><a href="http://www.zhangxinxu.com/wordpress/category/%e5%a4%96%e6%96%87%e7%bf%bb%e8%af%91/">外文翻译</a> (37)
+</li>
+		</ul>
+</li><li id="archives-3" class="widget widget_archive"><h2 class="widgettitle">文章存档</h2>		<ul>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2018/06/">2018年六月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2018/05/">2018年五月</a>&nbsp;(9)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2018/04/">2018年四月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2018/03/">2018年三月</a>&nbsp;(9)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2018/02/">2018年二月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2018/01/">2018年一月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/12/">2017年十二月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/11/">2017年十一月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/10/">2017年十月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/09/">2017年九月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/08/">2017年八月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/07/">2017年七月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/06/">2017年六月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/05/">2017年五月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/04/">2017年四月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/03/">2017年三月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/02/">2017年二月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2017/01/">2017年一月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/12/">2016年十二月</a>&nbsp;(2)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/11/">2016年十一月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/10/">2016年十月</a>&nbsp;(2)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/09/">2016年九月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/08/">2016年八月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/07/">2016年七月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/06/">2016年六月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/05/">2016年五月</a>&nbsp;(2)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/04/">2016年四月</a>&nbsp;(2)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/03/">2016年三月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/02/">2016年二月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2016/01/">2016年一月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/12/">2015年十二月</a>&nbsp;(2)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/11/">2015年十一月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/10/">2015年十月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/08/">2015年八月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/07/">2015年七月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/06/">2015年六月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/05/">2015年五月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/04/">2015年四月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/03/">2015年三月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/02/">2015年二月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2015/01/">2015年一月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/12/">2014年十二月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/11/">2014年十一月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/10/">2014年十月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/09/">2014年九月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/08/">2014年八月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/07/">2014年七月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/06/">2014年六月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/05/">2014年五月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/04/">2014年四月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/03/">2014年三月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/02/">2014年二月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2014/01/">2014年一月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/12/">2013年十二月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/11/">2013年十一月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/10/">2013年十月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/09/">2013年九月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/08/">2013年八月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/07/">2013年七月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/06/">2013年六月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/05/">2013年五月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/04/">2013年四月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/03/">2013年三月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/02/">2013年二月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2013/01/">2013年一月</a>&nbsp;(10)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/12/">2012年十二月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/11/">2012年十一月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/10/">2012年十月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/09/">2012年九月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/08/">2012年八月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/07/">2012年七月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/06/">2012年六月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/05/">2012年五月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/04/">2012年四月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/03/">2012年三月</a>&nbsp;(9)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/02/">2012年二月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2012/01/">2012年一月</a>&nbsp;(4)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/12/">2011年十二月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/11/">2011年十一月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/10/">2011年十月</a>&nbsp;(3)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/09/">2011年九月</a>&nbsp;(9)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/08/">2011年八月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/07/">2011年七月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/06/">2011年六月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/05/">2011年五月</a>&nbsp;(8)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/04/">2011年四月</a>&nbsp;(8)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/03/">2011年三月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/02/">2011年二月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2011/01/">2011年一月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/12/">2010年十二月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/11/">2010年十一月</a>&nbsp;(8)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/10/">2010年十月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/09/">2010年九月</a>&nbsp;(10)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/08/">2010年八月</a>&nbsp;(10)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/07/">2010年七月</a>&nbsp;(10)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/06/">2010年六月</a>&nbsp;(8)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/05/">2010年五月</a>&nbsp;(11)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/04/">2010年四月</a>&nbsp;(14)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/03/">2010年三月</a>&nbsp;(11)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/02/">2010年二月</a>&nbsp;(1)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2010/01/">2010年一月</a>&nbsp;(16)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/12/">2009年十二月</a>&nbsp;(13)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/11/">2009年十一月</a>&nbsp;(7)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/10/">2009年十月</a>&nbsp;(6)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/09/">2009年九月</a>&nbsp;(5)</li>
+	<li><a href="http://www.zhangxinxu.com/wordpress/2009/08/">2009年八月</a>&nbsp;(12)</li>
+		</ul>
+</li>		<li id="recent-posts-3" class="widget widget_recent_entries">		<h2 class="widgettitle">最新文章</h2>		<ul>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2018/06/wechat-web-page-float-window-interaction/">微信网页悬浮窗交互效果的web实现</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2018/06/lovers-marriage/">《CSS世界》女主角诚寻靠谱一起奋斗之人</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2018/06/js-localforage-localstorage-indexdb/">突破本地离线存储5M限制的JS库localforage简介</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2018/06/js-canny-edge-photo-image-to-line/">JS实现照片图片变成黑白线条线稿</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2018/05/click-page-popup-text-tips/">小tips: 点击页面出现富强、民主这类文字动画效果</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2018/05/js-dom-transform-line-chart/">不借助Echarts等图形框架原生JS快速实现折线图效果</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2018/05/live2d-web-webgl-js/">二次元live2d看板娘效果中的web前端技术</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2018/05/pure-css-candle-flame-smoke/">小tips: 纯CSS实现蜡烛、火焰以及熄灭后烟雾效果</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2018/05/introduce-yapi-api/">在同事的安利下，试用了下接口管理平台YApi</a>
+						</li>
+					<li>
+				<a href="http://www.zhangxinxu.com/wordpress/2018/05/windows-bat-delete-os-x-ds_store/">windows系统下批量删除OS X系统.DS_Store文件</a>
+						</li>
+				</ul>
+		</li><li id="daily-top-10-posts" class="widget widget_dailytopten"><h2 class="widgettitle">今日热门</h2><ul>
+<li><a href="http://www.zhangxinxu.com/wordpress/2018/06/wechat-web-page-float-window-interaction/">微信网页悬浮窗交互效果的web实现</a> (441)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2018/06/lovers-marriage/">《CSS世界》女主角诚寻靠谱一起奋斗之人</a> (120)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/11/%e6%8b%9c%e6%8b%9c%e4%ba%86%e6%b5%ae%e5%8a%a8%e5%b8%83%e5%b1%80-%e5%9f%ba%e4%ba%8edisplayinline-block%e7%9a%84%e5%88%97%e8%a1%a8%e5%b8%83%e5%b1%80/">拜拜了,浮动布局-基于display:inline-block的列表布局</a> (47)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2014/12/css3-svg-clip-path/">CSS3/SVG clip-path路径剪裁遮罩属性简介</a> (43)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2010/03/every-browser-support-html5-video/">让所有浏览器支持HTML5 video视频标签</a> (40)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2018/06/js-localforage-localstorage-indexdb/">突破本地离线存储5M限制的JS库localforage简介</a> (33)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/09/css3-3d-transform-perspective-animate-transition/">好吧，CSS3 3D transform变换，不过如此！</a> (31)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-%e7%9f%a9%e9%98%b5/">理解CSS3 transform中的Matrix(矩阵)</a> (28)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2012/09/new-viewport-relative-units-vw-vh-vm-vmin/">视区相关单位vw, vh..简介以及可实际应用场景</a> (27)</li>
+<li><a href="http://www.zhangxinxu.com/wordpress/2015/11/html-input-type-file/">HTML input type=file文件选择表单元素二三事</a> (26)</li>
+</ul>
+</li>                </ul>
+            </div>
+        </div>
+	</div>
+<div id="footer" role="contentinfo">
+<p>
+Powered by <a href="http://wordpress.org/">WordPress</a> | Designed by <a href="http://www.zhangxinxu.com/">zhangxinxu</a><br>
+Copyright© 2009-2018 张鑫旭-鑫空间-鑫生活<br>
+<a target="_blank" href="http://www.miibeian.gov.cn/">鄂ICP备09015569号</a>
+</p>
+</div>
+<script src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/logger.js"></script></div>
+
+
+<script type="text/javascript" src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/form.js"></script>
+<script type="text/javascript" src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/comment-reply.min.js"></script>
+
+<div id="footbar" role="toolbar" class="slideout">
+	<div class="foot_yy_x hidden" id="footYyX">
+    	<div class="foot_yy_title">
+        	<span class="l">我的应用</span>
+            <a href="javascript:" class="r" id="footYYClose">-</a>
+        </div>
+        <div class="ml10 mr10 foot_yy_dv">工具与应用</div>
+        <div class="mt5">
+        	<a class="foot_yy_a" href="http://www.zhangxinxu.com/sp/base64.html">图片转base64(拖进来)</a>
+			<a class="foot_yy_a" href="http://www.zhangxinxu.com/sp/qrcode.html">在线二维码</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/sp/char.html">任意字符转HTML编码</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/sp/gif/">GIF在线生成工具</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/sp/filter/">电影级别照片调色工具</a>
+        </div>
+        <div class="ml10 mr10 foot_yy_dv">在线资源</div>
+        <div class="mt5">
+        	<a class="foot_yy_a" href="http://www.zhangxinxu.com/jq/api14/">jQuery 1.4 API中文版</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/GitHub/demo-Snap.svg/demo/basic/">Snap.svg中文文档</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/jq/stylus/">stylus中文版参考文档</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/css3/">CSS3中文共享参考指南</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/sp/character.html">非主流字符及字符图案</a>
+            <a class="foot_yy_a" href="http://www.zhangxinxu.com/jq/mt/">MooTools 1.2中文文档</a>
+        </div>
+        <div>&nbsp;</div>
+        <a href="javascript:" class="foot_yy foot_yy_on nowrap" id="footYYOff"><img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/zxx_ico.png" class="vimg"> 我的应用</a>
+    </div>
+    <a href="javascript:" class="foot_yy nowrap" id="footYYShow"><img src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/zxx_ico.png" class="vimg"> 我的应用</a>
+    <span class="foot_rss l">
+    	<a class="foot_rss_a" href="http://www.zhangxinxu.com/wordpress/?feed=rss2">文章(RSS)</a>
+            </span>
+    <a href="http://www.zhangxinxu.com/wordpress/2013/12/javascript-js-%E5%85%83%E7%B4%A0-%E6%8A%9B%E7%89%A9%E7%BA%BF-%E8%BF%90%E5%8A%A8-%E5%8A%A8%E7%94%BB/#" id="backToTop" class="foot_top">返回顶部↑</a>
+	<a href="http://www.zhangxinxu.com/wordpress/wp-login.php" class="foot_login"><i class="icon-male"></i>登录</a>
+</div>
+
+<script src="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活_files/script-min.js"></script>
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-11205167-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<audio controls="controls" style="display: none;"></audio><div id="daMWFloat" class="da_for_mobile da_bottom hidden" style="display: block;">
+        <!-- 爱前端 -->
+        <div class="da_fix_bar da_ym">
+            <span class="ad_fix_title">想学到点真东西？</span>
+            <a href="javascript:" class="da_fix_close jsFC" title="不敢兴趣">×</a>
+        </div>
+        <a href="https://miaov.com/?zxx" target="_blank" class="da_bottom_ht da_bottom_1" onclick="_gaq.push([&#39;_trackEvent&#39;, &#39;MWAD&#39;, &#39;click&#39;, &#39;float&#39;]);"></a>
+    </div></body><style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></html>

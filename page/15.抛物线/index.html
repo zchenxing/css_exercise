@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>
+                <a target="__blank" href="./小折腾：JavaScript与元素间的抛物线轨迹运动 « 张鑫旭-鑫空间-鑫生活.htm">JavaScript与元素间的抛物线轨迹运动</a>
+            </li>
+            <li>
+                <code>element</code>表示移动的元素，例如demo中的小球球。原生DOM节点</li>
+            <li>
+                <code>target</code>表示目标元素。例如demo中的椭圆形的大便池。原生DOM节点</li>
+            <li>
+                <code>options</code>为可选参数。各个API名称以及含义如下：
+                <ul>
+                    <li>
+                        <code>speed</code> 表示每帧移动的像素大小，每帧（对于大部分显示屏）大约16~17毫秒。默认大小是166.67。也就是默认
+                        <code>10px/ms</code>.</li>
+                    <li>
+                        <code>curvature</code> 可以近似理解为抛物线的开头大小，也就是曲率。正数表示开口向下。默认大小是
+                        <code>0.001</code>. 数值越大，开头越小，弧度越高。因为web页面动辄大小几百像素，因此，曲率值较小。</li>
+                    <li>
+                        <code>progress</code> 表示抛物线运动过程中的回调，支持两个参数，
+                        <code>x</code>,
+                        <code>y</code>，表示当前的坐标，您可以根据这些坐标值做一些特殊的处理。</li>
+                    <li>
+                        <code>complete</code> 表示抛物线运动结束后的回调。</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+
+    <div id="element">element</div>
+    <div id="target"></div>
+</body>
+
+<script src="./parabola.js"></script>
+<script>
+    var element = document.getElementById("element"),
+        target = document.getElementById("target");
+
+    // 抛物线元素的的位置标记
+    var parabola = funParabola(element, target, {
+        speed: 700,
+        curvature: 0.001,
+        complete: function () {
+            element.style.visibility = "hidden";
+            target.innerHTML = 1;
+        }
+    }).mark();
+
+    // 抛物线运动的触发
+    document.body.onclick = function () {
+        element.style.marginLeft = "0";
+        element.style.marginTop = "0";
+        parabola.init();
+    };
+</script>
+
+</html>

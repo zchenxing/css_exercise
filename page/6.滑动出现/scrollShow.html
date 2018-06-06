@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../js/jquery-3.1.1.js"></script>
+    <title>Document</title>
+</head>
+
+
+<style type="text/css">
+    .box {
+        width: 300px;
+        height: 200px;
+        background: #ff0000;
+        margin-bottom: 10px;
+        text-align: center;
+        line-height: 200px;
+        font-size: 40px;
+        position: relative;
+        margin-top: 30px;
+        left: -350px;
+    }
+
+    .animate {
+        animation: showText 1s, left 1s;
+        animation-fill-mode: forwards;
+    }
+
+    .hidden-animate {
+        animation: hiddenText 1s;
+        animation-fill-mode: forwards;
+    }
+
+    .show {
+        background-color: palegreen;
+    }
+
+    @keyframes showText {
+        from {
+            font-size: 20px;
+            left: -350px;
+            margin-left: 0;
+            transform: rotate(0deg);
+        }
+        to {
+            font-size: 40px;
+            left: 50%;
+            margin-left: -100px;
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes hiddenText {
+        from {
+            height: 200px;
+        }
+        to {
+            height: 20px;
+        }
+    }
+</style>
+
+<body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</body>
+
+
+<script type="text/javascript">
+
+    show();
+
+    document.addEventListener('scroll', function () {
+        show();
+    });
+
+    function show() {
+        
+        var box = document.getElementsByClassName('box');
+        // 视窗高度 + 滚动条高度 = 可见区域底部高度
+        var visibleBottom = window.scrollY + document.documentElement.clientHeight;
+        // 可见区域顶部高度
+        var visibleTop = window.scrollY;
+
+        for (var i = 0; i < box.length; i++) {
+
+            box[i].innerHTML = i;
+
+            var hasClass = box[i].getAttribute('class');
+
+            var centerY = box[i].offsetTop + (box[i].offsetHeight / 2);
+
+            if (centerY > visibleTop && centerY < visibleBottom) {
+
+                if (i % 2 == 0) {
+                    box[i].setAttribute("class", "box show animate");
+                } else {
+                    box[i].setAttribute("class", "box hidden-animate");
+                }
+            } else {
+
+                if (hasClass.indexOf('show') > 0) {
+                    // box[i].setAttribute("class", "box show");
+                } else {
+                    // box[i].setAttribute("class", "box");
+                }
+            }
+        }
+    }
+</script>
+
+</html>

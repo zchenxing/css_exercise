@@ -1,0 +1,25 @@
+html,body {
+    height: 200%;
+}
+
+#element {
+    position: relative;
+    left: 300px;
+    top: 500px;
+    width: 50px;
+    height: 50px;
+    background: paleturquoise;
+}
+
+
+#target {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    background: palevioletred;
+}

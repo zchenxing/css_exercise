@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)http://www.zhangxinxu.com/study/201803/web-animation-support.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="description" content="web animations API所有的方法以及所有的属性是否支持检测">
+<meta name="keywords" content="web animations API, JS, 检测, 兼容性, polyfill">
+<meta name="author" content="张鑫旭, zhangxinxu">
+<title>web animations API是否支持检测</title>
+<style>
+*,
+*:before {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", sans-serif;
+  line-height: 1.4;
+  padding: 1rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+p,
+p + ul {
+  margin-bottom: 2rem;
+}
+
+li::before,
+span::before {
+  content: "N";
+  color: white;
+  text-align: center;
+  font-size: 0.5em;
+  vertical-align: text-top;
+  padding-top: 0.1rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: red;
+  display: inline-block;
+  margin: 0 0.5rem;
+}
+li.deprecated,
+span.deprecated {
+  opacity: 0.4;
+}
+li.deprecated::before,
+span.deprecated::before {
+  background-color: black;
+  content: "O";
+}
+li.passed::before,
+span.passed::before {
+  background-color: green;
+  border-radius: 50%;
+  content: "S";
+}
+li.passed.deprecated::before,
+span.passed.deprecated::before {
+  content: "O";
+}
+li li,
+span li {
+  margin-left: 1rem;
+}
+
+li:target {
+  border-left: 0.5rem solid orange;
+}
+
+@-webkit-keyframes pulse {
+  50% {
+    background: orange;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    background: orange;
+  }
+}
+aside {
+  opacity: 0;
+}
+
+aside div {
+  display: inline-block;
+  -webkit-transition: opacity 100s linear;
+  transition: opacity 100s linear;
+}
+
+#css-anim {
+  -webkit-animation: pulser 1s 0s infinite alternate linear;
+          animation: pulser 1s 0s infinite alternate linear;
+}
+
+@-webkit-keyframes pulser {
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulser {
+  100% {
+    opacity: 0;
+  }
+}
+footer {
+  font-size: 0.8em;
+}
+
+</style>
+</head>
+
+<body>
+<h2>浏览器是否原生支持Web Animations API</h2>
+<p><span class="passed">支持</span> |<span>不支持</span></p>
+
+<ul>
+<li id="test-animate" class="passed">Element.animate()支持
+  <ul>
+  <li id="test-animate-kfa" class="sub passed">第一个参数支持数组关键帧类似这样： [
+      {opacity: 1},
+      {opacity: 0} ]</li>
+  <li id="test-animate-kfo" class="sub passed">第一个参数作为对象，且属性值是数组，类似这样：{ opacity: [1, 0] }</li>
+    <li id="test-animate-single">单个keyframe (<a href="https://codepen.io/danwilson/pen/qrMpWP/" target="_blank">案例</a>)</li>
+  <li id="test-pid" class="sub passed">id</li>
+  <li id="test-pcp" class="sub passed">play()</li>
+  <li id="test-pcs" class="sub passed">pause()</li>
+  <li id="test-pcr" class="sub passed">reverse()</li>
+  <li id="test-pcc" class="sub passed">cancel()</li>
+  <li id="test-pcf" class="sub passed">finish()</li>
+  <li id="test-ps" class="sub passed">playState</li>
+  <li id="test-pbr" class="sub passed">playbackRate</li>
+  <li id="test-pending" class="sub">pending</li>
+  <li id="test-ctst" class="sub passed">currentTime/startTime</li>
+  <li id="test-tl" class="sub">timeline</li>
+  <li id="test-poc" class="sub passed">oncancel handler</li>
+  <li id="test-pof" class="sub passed">onfinish handler</li>
+  <li id="test-pfp" class="sub">finished Promise</li>
+  <li id="test-prp" class="sub">ready Promise</li>
+    <li id="test-pe" class="sub">effect (亦可见<a href="http://www.zhangxinxu.com/study/201803/web-animation-support.html#test-kec">KeyframeEffect constructor</a>)
+      <ul>
+        <li id="test-pe-gct">getComputedTiming()</li>
+        <li id="test-pe-gkf">getKeyframes()</li>
+        <li id="test-pe-skf">setKeyframes()</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li id="test-ega">Element.getAnimations()</li>
+<li id="test-kec">KeyframeEffect constructor
+  <ul>
+    <li id="test-kec-duration" class="sub">set duration</li>
+    <li id="test-kec-fill" class="sub">set fill</li>
+    <li id="test-kec-direction" class="sub">set direction</li>
+    <li id="test-kec-iterations" class="sub">set iterations</li>
+    <li id="test-kec-iterationStart" class="sub">set iterationStart</li>
+    <li id="test-kec-delay" class="sub">set delay</li>
+    <li id="test-kec-endDelay" class="sub">set endDelay</li>
+    <li id="test-kec-easing" class="sub">set easing</li>
+    <li id="test-kec-composite" class="sub">set composite</li>
+    <li id="test-kec-iterationComposite" class="sub">set iterationComposite</li>
+  </ul>
+</li>
+<li id="test-ac">Animation constructor</li>
+<li id="test-dt">Document default timeline
+  <ul>
+    <li id="test-dtct" class="sub">timeline.currentTime</li>
+  </ul>
+</li>
+<li id="test-dga">document.getAnimations()
+  <ul>
+    <li id="test-dgaca">includes CSS Animations*</li>
+    <li id="test-dgact">includes CSS Transitions*</li>
+  </ul>
+</li>
+<li id="test-dtc">DocumentTimeline constructor</li>
+</ul>
+
+<p>更新状态：<a href="https://birtles.github.io/areweanimatedyet/">Firefox</a>, <a href="https://www.chromestatus.com/features#animations">Chrome/Opera</a>, <a href="https://dev.windows.com/en-us/microsoft-edge/platform/status/webanimationsjavascriptapi">Edge</a>, <a href="https://webkit.org/status/#specification-web-animations">Safari</a></p>
+
+<footer>
+<aside>
+  <div id="waapi-anim">Infinite WAAPI Animation</div>
+  <div id="css-anim">Infinite CSS Animation</div>
+  <div id="css-tran" style="opacity: 0.1;">Long CSS Transition</div>
+</aside>
+<script type="text/javascript" async="" src="./ga.js"></script><script>
+function handleOnFinish() {
+  performBasicTest(true, 'test-pof');
+}
+function handleOnCancel() {
+  performBasicTest(true, 'test-poc');
+}
+function handleFinished() {
+  performBasicTest(true, 'test-pfp');
+}
+function handleReady() {
+  performBasicTest(true, 'test-prp');
+}
+startAnimation();
+
+var animateTest = document.getElementById('test-animate');
+var animateTestAsArray = document.getElementById('test-animate-kfa');
+var animateTestAsObject = document.getElementById('test-animate-kfo');
+var animateTestSingle = document.getElementById('test-animate-single');
+
+if (animateTest.animate !== undefined) {
+  animateTest.classList.add('passed');
+  var player = animateTestAsArray.animate([
+    {opacity:1},
+    {opacity:.5},
+    {opacity:1}
+  ,], {
+    iterations: 1,
+    duration: 100,
+    id: 'ISetTheId'
+  });
+  var player3 = animateTestAsArray.animate([
+    {opacity:1},
+    {opacity:.5},
+    {opacity:1}
+  ,], {
+    iterations: 1,
+    duration: 100
+  });
+  if (player) {
+    performBasicTest(true, 'test-animate-kfa');
+    player.onfinish = handleOnFinish;
+    if (player.finished && player.finished.then) {
+      player.finished.then(handleFinished);
+    }
+    if (player.ready && player.ready.then) {
+      player.ready.then(handleReady);
+    }
+  }
+  if (player3) {
+    player3.oncancel = handleOnCancel;
+    if (typeof player3.cancel === 'function') {
+      player3.cancel();
+    }
+  }
+  try {
+    var player2 = animateTestAsObject.animate({ opacity: [1,.5,1] }, {
+      iterations: 1,
+      duration: 100
+    });
+    if (player2 && (typeof player2.play === 'function') && player2.currentTime >= 0 && window.getComputedStyle) {
+      player2.pause();
+      player2.currentTime = 50;
+     console.log((parseFloat(window.getComputedStyle(animateTestAsObject).opacity))); performBasicTest((parseFloat(window.getComputedStyle(animateTestAsObject).opacity) === 0.5), 'test-animate-kfo');
+
+      player2.play();
+      player2.onfinish = handleOnFinish;
+    }
+  } catch(e) {}
+  
+  try {
+    
+    var playerSingle = animateTestSingle.animate([
+      { offset: 1, opacity: 1}
+    ], {
+      iterations: 1,
+      duration: 100
+    }).onfinish = function() {
+      
+  performBasicTest(true, 'test-animate-single');
+    };
+  } catch(e) {
+    console.log('Single Keyframe test failed', e);
+  }
+  
+  performBasicTest((player.id === 'ISetTheId'), 'test-pid');
+  
+  performBasicTest((typeof player.play === 'function'), 'test-pcp');
+  performBasicTest((typeof player.pause === 'function'), 'test-pcs');
+  performBasicTest((typeof player.reverse === 'function'), 'test-pcr');
+  performBasicTest((typeof player.cancel === 'function'), 'test-pcc');
+  performBasicTest((typeof player.finish === 'function'), 'test-pcf');
+  performBasicTest((player.playState !== undefined), 'test-ps');
+  performBasicTest((player.playbackRate !== undefined), 'test-pbr');
+  performBasicTest((player.pending !== undefined), 'test-pending');
+  performBasicTest((player.currentTime !== undefined && player.startTime !== undefined), 'test-ctst');
+  performBasicTest((player.timeline !== undefined), 'test-tl');
+  if (performBasicTest((player.effect !== undefined), 'test-pe')) {
+    performBasicTest((typeof player.effect.getComputedTiming === 'function'), 'test-pe-gct');
+    performBasicTest((typeof player.effect.getKeyframes === 'function'), 'test-pe-gkf');
+    performBasicTest((typeof player.effect.setKeyframes === 'function'), 'test-pe-skf');
+  }
+}
+performBasicTest((typeof animateTest.getAnimations === 'function'), 'test-ega');
+
+
+var options = {
+  duration: 1234,
+  fill: 'backwards',
+  direction: 'alternate',
+  iterations: 3,
+  iterationStart: 3000,
+  delay: 123,
+  endDelay: 123,
+  easing: 'ease-in-out',
+  composite: 'add',
+  iterationComposite: 'accumulate'
+};
+if (window.KeyframeEffect !== undefined) {
+  performBasicTest(true, 'test-kec');
+  var kfetest = document.getElementById('test-kec');
+  try {
+    var kfe = new KeyframeEffect(kfetest, [{opacity:0},{opacity:1}], options);
+    if (kfe) {
+
+      var kfeTests = document.querySelectorAll('[id*="test-kec-"]');
+      for (var i = 0, l = kfeTests.length; i < l; i++) {
+        var currentTest = kfeTests[i];
+        var option = currentTest.id.replace('test-kec-','');
+        if (options[option] == kfe[option] || (kfe.timing && options[option] == kfe.timing[option])) {
+          performBasicTest(true, currentTest.id);
+        }
+      }
+    }
+  } catch(e) {}
+}
+
+performBasicTest((window.Animation !== undefined), 'test-ac');
+
+var timeline = performBasicTest((document.timeline !== undefined), 'test-dt');
+if (timeline) {
+  performBasicTest((document.timeline.currentTime !== undefined), 'test-dtct');
+}
+
+var getAnims = performBasicTest((typeof document.getAnimations === 'function'), 'test-dga');
+if (getAnims) {
+  var allAnimations = document.getAnimations();
+  allAnimations.forEach(function(a, i) {
+    if (typeof a === 'CSSAnimation' || (a.effect && a.effect.target === document.getElementById('css-anim'))) {
+      performBasicTest(true, 'test-dgaca');
+    }
+    if (typeof a === 'CSSTransition' || (a.effect && a.effect.target === document.getElementById('css-tran'))) {
+      performBasicTest(true, 'test-dgact');
+    }
+  });
+}
+
+try {
+performBasicTest((typeof window.DocumentTimeline === 'function' && (new DocumentTimeline({originTime:0}))), 'test-dtc');
+} catch(e) {}
+
+function performBasicTest(test, id) {
+  if (test) {
+    document.getElementById(id) && document.getElementById(id).classList.add('passed');
+  }
+  return test;
+}
+
+function startAnimation() {
+  document.getElementById('css-tran').style.opacity = .1;
+  if (document.body.animate) {
+    document.getElementById('waapi-anim').animate({opacity: [1,0]}, {
+      duration: 1000,
+      iterations: Infinity,
+      direction: 'alternate'
+    });
+  }
+}
+</script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-11205167-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+	var ga = document.createElement('script');
+	 ga.type = 'text/javascript';
+	 ga.async = true;
+	ga.src = 'http://www.google-analytics.com/ga.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+
+</footer><audio controls="controls" style="display: none;"></audio></body><style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></html>

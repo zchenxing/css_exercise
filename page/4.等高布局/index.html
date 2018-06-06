@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <a href="https://mp.weixin.qq.com/s?__biz=MzIyNTA0MTgyNQ==&mid=2652499585&idx=1&sn=4ee552f3b317315ad5b495a7c8d244a8&chksm=f3e8824fc49f0b59f626ef0a76e8ae2ed4119ba4da1dd94c3b73ea374e5f3f6fdd9839d78463&scene=38#wechat_redirect" target="_blank">如何实现等高布局</a>
+
+    <div class="container">
+        <div class="left">left div</div>
+        <div class="right">right div： 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚</div>
+    </div>
+
+
+    <div class="main">
+        <div class="item">item div</div>
+        <div class="item">item div： 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚</div>
+    </div>
+
+
+    <div class="wrap">
+        <div class="wrap-item">wrap-left</div>
+        <div class="wrap-item">wrap-right： 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚 红红火火恍恍惚惚</div>
+    </div>
+
+</body>
+
+<style>
+    
+    /*——————————————————————————————————————————————————————————*/
+    .container {
+        width: 800px;
+        background-color: wheat;
+        overflow: hidden;
+    }
+
+    .left,
+    .right {
+        float: left;
+        width: 300px;
+        word-wrap: break-word;
+        margin-left: 10px;
+        margin-bottom: -10000px;
+        padding: 10px;
+        padding-bottom: 10000px;
+        border: 1px solid firebrick;
+    }
+
+    /*——————————————————————————————————————————————————————————*/
+    .main {
+        margin-top: 100px;
+        display: flex;
+        align-items: stretch;
+        background-color: darkcyan;
+    }
+
+    .item {
+        flex: 1;
+        background: darkkhaki;
+        margin-left: 10px;
+        padding: 10px;
+    }
+
+
+        
+    /*——————————————————————————————————————————————————————————*/
+    .wrap {
+        margin-top: 100px;
+        width: 800px;
+        background-color: tan;
+    }
+
+    .wrap-item {
+        display: table-cell;
+        width: 300px;
+        background-color: gainsboro;
+        padding: 10px;
+        border: 1px solid darkgrey;
+    }
+
+</style>
+
+</html>

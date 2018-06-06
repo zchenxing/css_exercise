@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style/reset.css">
+    <link rel="stylesheet" href="./style/index.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="main">
+    </div>
+</body>
+
+
+<script>
+    class PageItem {
+
+        constructor() {
+            this.state = {
+                list: [
+                    "./page/1.三角形/triangle.html", "./page/2.居中/index.html", 
+                    "./page/3.多列布局/index.html","./page/4.等高布局/index.html", 
+                    "./page/5.弹出层/index.html", "./page/6.滑动出现/scrollShow.html", 
+                    "./page/7.轮播简单/index.html", "./page/8.瀑布流/index.html", 
+                    "./page/9.商品菜单/index.html", "./page/10.页面平滑滚动/scroller.html", 
+                    "./page/11.导航栏下划线/index.html", "./page/12.圆形loading/index.html", 
+                    "./page/13.圆形进度条(canvas)/index.html", "./page/14.卡片试页面/index.html", 
+                    "./page/15.抛物线/index.html", "./page/16.web-animation-api/index.html"
+                ]
+            }
+        }
+
+
+        render() {
+            let domString = "",
+                name = "";
+            this.state.list.forEach((item) => {
+                name = item.split("/")[2]
+                domString +=
+                    `
+                <li>
+                    <a href="${item}">
+                        <span>${name}</span>
+                    </a>
+                </li>
+                `
+            })
+            return domString
+        }
+    }
+
+
+    let main = document.getElementsByClassName("main")[0]
+    const pageItem = new PageItem();
+    main.innerHTML = pageItem.render()
+
+
+    var a = Array.from(document.getElementsByTagName('a'));
+    a.forEach((el, index) => {
+        el.setAttribute("target", "_blank")
+    })
+</script>
+
+</html>

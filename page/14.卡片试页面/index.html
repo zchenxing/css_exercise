@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../js//jquery-3.1.1.js"></script>
+    <link rel="stylesheet" href="../../style/reset.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="page page1">
+            <p onclick="selectShop()">购买</p>
+        </div>
+
+        <div class="cover" onclick="cancel()"></div>
+
+        <div class="page page2">
+            <p>商品</p>
+        </div>
+    </div>
+</body>
+
+
+<style>
+    .container {
+        position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 375px;
+        height: 667px;
+        overflow: hidden;
+        background: black;
+    }
+
+    .page {
+        width: 100%;
+        height: 100%;
+        background: paleturquoise;
+        position: relative;
+        transition: all .3s ease;
+    }
+
+    .page>p {
+        cursor: pointer;
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .cover {
+        display: none;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(68, 68, 68, 0.233);
+    }
+
+    .page2 {
+        position: absolute;
+        top: 100%;
+        height: 30%;
+        transition: top 0.3s ease-in-out;
+        background: palegreen;
+    }
+</style>
+
+
+<script>
+    let page1 = $(".page1");
+    let page2 = $(".page2");
+    let cover = $(".cover");
+
+    let selectShop = () => {
+        cover.css("display", "block");
+        page1.css({
+            "transform": "scale(0.9)",
+            "border-radius": "5px"
+        });
+        page2.css("top", "70%");
+    }
+
+
+    let cancel = () => {
+        cover.css("display", "none");
+        page1.css({
+            "transform": "scale(1)",
+            "border-radius": "0"
+        });
+        page2.css("top", "100%");
+    }
+</script>
+
+
+</html>

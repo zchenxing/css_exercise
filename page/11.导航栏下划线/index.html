@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul>
+        <li>首页</li>
+        <li>归档</li>
+        <li>活动</li>
+        <li>其他</li>
+        <li>设置</li>
+    </ul>
+
+</body>
+
+<style>
+    ul {
+        display: flex;
+        position: absolute;
+        width: 800px;
+        top: 10%;
+        list-style: none;
+    }
+
+    li {
+        position: relative;
+        padding: 20px;
+        cursor: pointer;
+        transition: 0.2s all linear;
+    }
+
+    li::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 100%;
+        width: 0;
+        height: 100%;
+        border-bottom: 2px solid palevioletred;
+        transition: 0.2s all linear;
+    }
+
+    li:hover::before {
+        left: 0;
+        width: 100%;
+    }
+
+    li:hover ~ li::before {
+        left: 0;
+    }
+
+</style>
+
+</html>

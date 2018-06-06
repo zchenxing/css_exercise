@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../style/reset.css">
+    <script src="../../js/jquery-3.1.1.js"></script>
+    <title>Document</title>
+</head>
+
+<style type="text/css">
+    .page1 {
+        background: url('../../images/page1.jpg') no-repeat;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center center;
+        background-color: palegoldenrod;
+    }
+
+    .page2 {
+        background: url('../../images/page2.jpg') no-repeat;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-color: palegoldenrod;
+    }
+
+    .page3 {
+        background: url('../../images/page3.jpg') no-repeat;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-color: palegoldenrod;
+    }
+
+    .page-switch {
+        position: fixed;
+        left: 10px;
+        top: 50%;
+    }
+</style>
+
+<body>
+    <div class="page1" name="p1"></div>
+    <div class="page2" name="p2"></div>
+    <div class="page3" name="p3"></div>
+
+
+    <ul class="page-switch">
+        <li>
+            <button id="page1-btn">page1</button>
+        </li>
+        <li>
+            <button id="page2-btn">page2</button>
+        </li>
+        <li>
+            <button id="page3-btn">page3</button>
+        </li>
+    </ul>
+</body>
+
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $('#page1-btn').click(function () {
+            $('html,body').animate({
+                scrollTop: $('.page1').offset().top
+            }, 500);
+        });
+
+        $('#page2-btn').click(function () {
+            $('html,body').animate({
+                scrollTop: $('.page2').offset().top
+            }, 500);
+        });
+
+        $('#page3-btn').click(function () {
+            $('html,body').animate({
+                scrollTop: $('.page3').offset().top
+            }, 500);
+        });
+
+    })
+
+
+   
+</script>
+
+</html>

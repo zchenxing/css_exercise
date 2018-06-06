@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <a href="https://mp.weixin.qq.com/s/VbdZVOO_Ufvqx2RqMYidAg" target="_blank">多列布局的实践</a>
+
+    <div class="wrapper">
+
+        <div class="inner_wrapper">
+            
+            <div class="item">
+                <img src="http://scimg.jb51.net/touxiang/201710/2017101423191998.jpg" alt="">
+                <span class="count">1</span>
+            </div>
+            <div class="item">
+                <img src="http://scimg.jb51.net/touxiang/201710/2017101423191998.jpg" alt="">
+                <span class="count">2</span>
+            </div>
+            <div class="item">
+                <img src="http://scimg.jb51.net/touxiang/201710/2017101423191998.jpg" alt="">
+                <span class="count">3</span>
+            </div>
+            <div class="item">
+                <img src="http://scimg.jb51.net/touxiang/201710/2017101423191998.jpg" alt="">
+                <span class="count">4</span>
+            </div>
+            <div class="item">
+                <img src="http://scimg.jb51.net/touxiang/201710/2017101423191998.jpg" alt="">
+                <span class="count">5</span>
+            </div>
+            <div class="item">
+                <img src="http://scimg.jb51.net/touxiang/201710/2017101423191998.jpg" alt="">
+                <span class="count">6</span>
+            </div>
+            <div class="item">
+                <img src="http://scimg.jb51.net/touxiang/201710/2017101423191998.jpg" alt="">
+                <span class="count">7</span>
+            </div>
+            <div class="item">
+                <img src="http://scimg.jb51.net/touxiang/201710/2017101423191998.jpg" alt="">
+                <span class="count">8</span>
+            </div>
+            <div class="item">
+                <img src="http://scimg.jb51.net/touxiang/201710/2017101423191998.jpg" alt="">
+                <span class="count">9</span>
+            </div>
+            <div class="item">
+                <img src="http://scimg.jb51.net/touxiang/201710/2017101423191998.jpg" alt="">
+                <span class="count">10</span>
+            </div>
+            <div class="item">
+                <img src="http://scimg.jb51.net/touxiang/201710/2017101423191998.jpg" alt="">
+                <span class="count">11</span>
+            </div>
+            <div class="item">
+                <img src="http://scimg.jb51.net/touxiang/201710/2017101423191998.jpg" alt="">
+                <span class="count">12</span>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+
+<style>
+
+    * {
+        margin: 0;
+    }
+
+
+    .wrapper {
+        padding: 10px;
+    }
+
+    .inner_wrapper {
+        column-count: 2;
+        column-width: 100px;
+        column-gap: 10px;
+    }
+
+    .item {
+        position: relative;
+    }
+
+
+    .count {
+        position: absolute;
+        display: inline-block;
+        width: 100%;
+        bottom: 4px;
+        text-align: center;
+        background: rgba(57, 47, 57, 0.5);
+        color: white;
+    }
+
+    img {
+        width: 100%;
+    }
+
+</style>
+
+
+</html>
