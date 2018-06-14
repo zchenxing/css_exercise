@@ -15,8 +15,9 @@ html, body {
 body {
     font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
     font-size:14px;
-    color:#333;
 }
+
+
 h1, h2, h3, h4, h5, h6{font-weight:normal;}
 ul,ol {
     list-style: none;
