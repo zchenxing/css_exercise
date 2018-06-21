@@ -1,17 +1,24 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="./swiper.min.css">
 
     <!-- Demo styles -->
     <style>
+        html,
         body {
-            background: #eee;
+            position: relative;
+            height: 100%;
+            background: #2727275b;
+        }
+
+        body {
+            background: #000;
             font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
             font-size: 14px;
             color: #000;
@@ -19,86 +26,96 @@
             padding: 0;
         }
 
-        #banner {
-            max-width: 1200px;
+        .swiper-container {
+            width: 100%;
+            height: 300px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .swiper-slide {
-            width: auto;
+            background-size: cover;
+            background-position: center;
         }
 
-        .swiper-slide img {
+        .gallery-top {
+            height: 80%;
             width: 100%;
         }
 
-        .swiper-pagination {
-            position: relative;
-            width: 100%;
+        .gallery-thumbs {
+            height: 20%;
+            box-sizing: border-box;
+            padding: 10px 0;
         }
 
-        .swiper-pagination-bullet {
-            width: 25%;
-            height: auto;
-            background: none;
+        .gallery-thumbs .swiper-slide {
+            height: 100%;
+            opacity: 0.4;
         }
 
-        .swiper-pagination-bullet img {
-            width: 100%;
+        .gallery-thumbs .swiper-slide-active {
+            opacity: 1;
         }
     </style>
 </head>
 
 <body>
     <!-- Swiper -->
-    <div id="banner">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="./img/01.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="./img/02.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="./img/03.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="./img/04.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="./img/01.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="./img/02.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="./img/03.jpg">
-                </div>
-                <div class="swiper-slide">
-                    <img src="./img/04.jpg">
-                </div>
-            </div>
+    <div class="swiper-container gallery-top">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image:url(img/01.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(img/02.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(img/03.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(img/04.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(img/05.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(img/06.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(img/07.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(img/08.jpg)"></div>
         </div>
-        <div class="swiper-pagination"></div>
+        <!-- Add Arrows -->
+        <div class="swiper-button-next swiper-button-white"></div>
+        <div class="swiper-button-prev swiper-button-white"></div>
     </div>
+    <div class="swiper-container gallery-thumbs">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image:url(img/01.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(img/02.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(img/03.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(img/04.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(img/05.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(img/06.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(img/07.jpg)"></div>
+            <div class="swiper-slide" style="background-image:url(img/08.jpg)"></div>
+        </div>
+    </div>
+
     <!-- Swiper JS -->
     <script src="./swiper.min.js"></script>
 
     <!-- Initialize Swiper -->
     <script>
-        window.onload = function () {
-            var swiper = new Swiper('.swiper-container', {
-                loop: true,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                    renderBullet: function (index, className) {
-                        return '<span class="' + className + '"><image src="./img/0' + (index + 1) +
-                            '.jpg"></span>';
-                    },
-                },
-            });
-        }
+        var galleryTop = new Swiper('.gallery-top', {
+            spaceBetween: 10,
+            loop: true,
+            loopedSlides: 5, //looped slides should be the same
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+        var galleryThumbs = new Swiper('.gallery-thumbs', {
+            direction: 'vertical',
+
+            spaceBetween: 10,
+            slidesPerView: 4,
+            touchRatio: 0.2,
+            loop: true,
+            loopedSlides: 5, //looped slides should be the same
+            slideToClickedSlide: true,
+        });
+        galleryTop.controller.control = galleryThumbs;
+        galleryThumbs.controller.control = galleryTop;
     </script>
 </body>
 

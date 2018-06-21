@@ -9,41 +9,82 @@
 </head>
 
 <body>
-    <div class="main-wrapper">
-        <div class="main"></div>
+
+    <header>双飞翼布局</header>
+    <div class="bd">
+        <div class="main text">
+            <div class="main-content">main</div>
+        </div>
+        <div class="left text">left</div>
+        <div class="right text">right</div>
     </div>
-    <div class="sub"></div>
-    <div class="extra"></div>
+    <footer>footer</footer>
+
 </body>
 
 <style>
-    .main-wrapper {
-        float: left;
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    header,
+    footer {
+        text-align: center;
         width: 100%;
+        background-color: #bbbbbb;
+    }
+
+
+    .text {
+        text-align: center;
+        line-height: 200px;
+        font-size: 40px;
+        color: #fff;
+    }
+
+    .bd {
+        overflow: hidden;
     }
 
     .main {
-        height: 300px;
-        margin-left: 210px;
-        margin-right: 190px;
-        background-color: rgba(255, 0, 0, .5);
+        float: left;
+        width: 100%;
+        background-color: #ddd;
     }
 
-    .sub {
+    .main-content {
+        margin: 0 200px;
+        background: #4d8ff1;
+        height: 565px;
+    }
+
+    .left {
         float: left;
         width: 200px;
-        height: 300px;
+        height: 200px;
+        background-color: #da4242;
+        /* 产生布局效果的属性 */
         margin-left: -100%;
-        background-color: rgba(0, 255, 0, .5);
+
+        margin-bottom: -1000px;
+        padding-bottom: 1000px;
     }
 
-    .extra {
+    .right {
         float: left;
-        width: 180px;
-        height: 300px;
-        margin-left: -180px;
-        background-color: rgba(0, 0, 255, .5);
+        width: 200px;
+        height: 200px;
+        background-color: #4ddef1;
+        /* 产生布局效果的属性 */
+        margin-left: -200px;
+        margin-bottom: -1000px;
+        padding-bottom: 1000px;
     }
 </style>
+
+
+<script>
+</script>
 
 </html>
