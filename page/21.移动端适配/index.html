@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+     <!-- width属性控制视口的宽度.可以像width=600这样设为确切的像素数，
+    或者设为device-width这一特殊值来指代比例为100%时屏幕宽度的CSS像素数值,
+    initial-scale属性控制页面最初加载时的缩放等级,
+    maximum-scale、minimum-scale及user-scalable属性控制允许用户以怎样的方式放大或缩小页面  -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./setRem.js"></script>
+</head>
+<body>
+    <div></div>
+    <p>REM适配</p>
+</body>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    div {
+        width: 9rem;
+        height: 1rem;
+        background: lavender;
+    }
+
+    p {
+        font-size: .6rem;
+    }
+
+</style>
+
+
+</html>
