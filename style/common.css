@@ -1,0 +1,45 @@
+hr {
+    border-style: dashed none none;
+    color: rgb(80, 97, 109);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+
+.container {
+    margin: 0 auto;
+    width: 70%;
+    max-width: 677px;
+}
+
+.title {
+    height: 100px;
+    line-height: 100px;
+    font-size: 22px;
+}
+
+.sub-title {
+    font-size: 20px;
+    text-align: justify;
+    white-space: normal;
+    font-family: "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: rgb(21, 153, 87);
+    line-height: 1.35;
+    word-wrap: break-word;
+    margin-bottom: 1rem;
+}
+
+.center {
+    text-align: center;
+}
+
+.content {
+    margin: 15px 0;
+    line-height: 30px;
+    letter-spacing: 2px;
+    font-size: 16px;
+    white-space: pre-line;
+    text-align: justify;
+    font-family: Avenir, -apple-system-font, 微软雅黑, sans-serif;
+    color: rgb(74, 74, 74);
+}
