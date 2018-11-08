@@ -21,5 +21,6 @@
 - [19.圣杯布局](https://github.com/zyj7815/css_exercise/blob/master/page/19.圣杯布局/index.html)
 - [20.双飞翼布局](https://github.com/zyj7815/css_exercise/blob/master/page/20.双飞翼布局/index.html)
 - [21.移动端适配](https://github.com/zyj7815/css_exercise/blob/master/page/21.移动端适配/index.html)
+        自已写了一个自适应的js脚本[fontlayout](https://github.com/zyj7815/css_exercise/blob/master/page/21.移动端适配/fontlayout.js)
 - [22.阴影随鼠标变换](https://github.com/zyj7815/css_exercise/blob/master/page/22.阴影随鼠标变换/index.html)
 - [23.图片懒加载](https://github.com/zyj7815/css_exercise/blob/master/page/23.图片懒加载/index.html)
