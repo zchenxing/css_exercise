@@ -10,37 +10,37 @@
 
 <body>
     <header>
-            <h4>在不确定宽高的情况下，让div居中显示</h4>
-            <ul>
-                <li>
-                    <div>1. 使用Flex</div>
-                    <p> 
-                        <span>在父盒子设置：display: flex; justify-content:center; align-items: center;</span>
-                    </p>
-                </li>
-        
-                <li>
-                    <div>2. 使用css3  transform</div>    
-                    <p> 父盒子设置：
-                        <span>position: relative;</span>
-                    </p>
-                    <p>div设置 : 
-                        <span>transform: translate(-50%, -50%); position: absolute; top:50%; left: 50%;</span>   
-                    </p>
-                </li>
-        
-                <li>
-                    <div>3. 使用 dispaly: table-cell</div>
-                    <p>父盒子设置：
-                        <span>display: table-cell; text-align: center; vertical-align: middle;</span>
-                    </p>
-                    <p>div设置：
-                        <span>display: inline-block; vertical-align: middle;</span>
-                    </p>
-                </li>
-            </ul>
+        <h4>在不确定宽高的情况下，让div居中显示</h4>
+        <ul>
+            <li>
+                <div>1. 使用Flex</div>
+                <p>
+                    <span>在父盒子设置：display: flex; justify-content:center; align-items: center;</span>
+                </p>
+            </li>
+
+            <li>
+                <div>2. 使用css3 transform</div>
+                <p> 父盒子设置：
+                    <span>position: relative;</span>
+                </p>
+                <p>div设置 :
+                    <span>transform: translate(-50%, -50%); position: absolute; top:50%; left: 50%;</span>
+                </p>
+            </li>
+
+            <li>
+                <div>3. 使用 dispaly: table-cell</div>
+                <p>父盒子设置：
+                    <span>display: table-cell; text-align: center; vertical-align: middle;</span>
+                </p>
+                <p>div设置：
+                    <span>display: inline-block; vertical-align: middle;</span>
+                </p>
+            </li>
+        </ul>
     </header>
-  
+
 
     <div class="wrapper">
         <div class="main">main</div>
@@ -128,7 +128,7 @@
         background: chartreuse;
     }
 
-    .main2{
+    .main2 {
         display: inline-block;
         vertical-align: middle;
         background: lavender;
