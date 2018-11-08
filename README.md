@@ -1,6 +1,12 @@
 ## CSS样式 - 练习
 
 - [1. CSS画三角形](https://github.com/zyj7815/css_exercise/blob/master/page/1.三角形/index.html)
+
+<html>
+	<div style="width: 100px; height: 100px; background: red;"></div>
+</html>
+
+
 - [2. 居中](https://github.com/zyj7815/css_exercise/blob/master/page/2.居中/index.html)
 - [3. 多列布局](https://github.com/zyj7815/css_exercise/blob/master/page/3.多列布局/index.html)
 - [4. 等高布局](https://github.com/zyj7815/css_exercise/blob/master/page/4.等高布局/index.html)
