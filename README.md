@@ -1,13 +1,29 @@
 ## CSS样式 - 练习
 
-- [1. CSS画三角形](https://github.com/zyj7815/css_exercise/blob/master/page/1.三角形/index.html)
+#### [1. CSS画三角形](https://github.com/zyj7815/css_exercise/blob/master/page/1.三角形/index.html)
 
-<html>
-	<div style="width: 100px; height: 100px; background: red;"></div>
-</html>
+#### [2. 居中](https://github.com/zyj7815/css_exercise/blob/master/page/2.居中/index.html)
+```
+在不确定宽高的情况下，让div居中显示
 
+1.  使用Flex
+    在父盒子设置：display: flex; justify-content:center; align-items: center;
 
-- [2. 居中](https://github.com/zyj7815/css_exercise/blob/master/page/2.居中/index.html)
+2.  使用css3 transform
+    父盒子设置: position: relative;
+    子元素设置 : transform: translate(-50%, -50%); 
+                position: absolute; 
+                top:50%; 
+                left: 50%;
+
+3.  使用 dispaly: table-cell
+    父盒子设置: display: table-cell; 
+                text-align: center; 
+                vertical-align: middle;
+    子元素设置：display: inline-block; 
+                vertical-align: middle;
+```
+
 - [3. 多列布局](https://github.com/zyj7815/css_exercise/blob/master/page/3.多列布局/index.html)
 - [4. 等高布局](https://github.com/zyj7815/css_exercise/blob/master/page/4.等高布局/index.html)
 - [5. 弹出框](https://github.com/zyj7815/css_exercise/blob/master/page/5.弹出框/index.html)
