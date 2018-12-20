@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <div class="wrapper main1">
+        <div class="item">item1</div>
+        <div class="item">item1</div>
+        <div class="item">item1</div>
+    </div>
+    <ul>
+        <li>原理：IE8以上和非IE浏览器才支持:after，原理和方法2有点类似，zoom(IE转有属性)可解决ie6,ie7浮动问题</li>
+        <li>优点：浏览器支持好，不容易出现怪问题（目前：大型网站都有使用，如：腾迅，网易，新浪等等）</li>
+        <li>缺点：代码多，不少初学者不理解原理，要两句代码结合使用，才能让主流浏览器都支持</li>
+        <li>建议：推荐使用，建议定义公共类，以减少CSS代码</li>
+        <li>评分：★★★★☆</li>
+    </ul>
+
+    <div class="wrapper main2">
+        <div class="item">item2</div>
+        <div class="item">item2</div>
+        <div class="item">item2</div>
+        <div style="clear:both;"></div>
+    </div>
+    <ul>
+        <li>原理：添加一个空div，利用css提高的clear:both清除浮动，让父级div能自动获取到高度</li>
+        <li>优点：简单，代码少，浏览器支持好，不容易出现怪问题</li>
+        <li>缺点：不少初学者不理解原理；如果页面浮动布局多，就要增加很多空div，让人感觉很不爽</li>
+        <li>建议：不推荐使用，但此方法是以前主要使用的一种清除浮动方法</li>
+        <li>评分：★★★☆☆</li>
+    </ul>
+
+    <div class="wrapper main3">
+        <div class="item">item2</div>
+        <div class="item">item2</div>
+        <div class="item">item2</div>
+    </div>
+    <ul>
+        <li>原理：必须定义width或zoom:1，同时不能定义height，使用overflow:hidden时，浏览器会自动检查浮动区域的高度</li>
+        <li>优点：简单，代码少，浏览器支持好</li>
+        <li>缺点：不能和position配合使用，因为超出的尺寸的会被隐藏</li>
+        <li>建议：只推荐没有使用position或对overflow:hidden理解比较深的朋友使用</li>
+        <li>评分：★★★☆☆</li>
+    </ul>
+</body>
+
+</html>

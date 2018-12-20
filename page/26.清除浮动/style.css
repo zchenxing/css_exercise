@@ -1,0 +1,34 @@
+.wrapper {
+}
+
+.main1 {
+    background: palevioletred;
+}
+
+.main1:after {
+    content: ' ';   
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+}
+
+
+.main2 {
+    background: peachpuff;
+}
+
+
+
+.main3 {
+    background: darkgoldenrod;
+    overflow: hidden;
+}
+
+.item {
+    width: 400px;
+    height: 50px;
+    float: left;
+    border: 2px solid palegreen;
+    text-align: center;
+}

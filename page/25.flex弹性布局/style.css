@@ -1,0 +1,21 @@
+.main {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.item {
+    flex: 0 0 30%;
+    background: rebeccapurple;
+    margin-bottom: 20px;
+}
+
+.item:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.hidden-item {
+    visibility: hidden;
+}

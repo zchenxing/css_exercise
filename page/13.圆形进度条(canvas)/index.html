@@ -10,7 +10,7 @@
 
 <body>
 
-    <canvas id="process" width="200" height="200"></canvas>
+    <canvas id="process" width="555" height="555"></canvas>
 
 </body>
 
@@ -21,7 +21,7 @@
             process = 0,
             ctx = c.getContext('2d');
 
-        // 画灰色的圆  
+        // 画外圆环
         ctx.beginPath();
         ctx.arc(100, 100, 80, 0, Math.PI * 2);
         ctx.closePath();
@@ -34,7 +34,7 @@
                 process = process + 1;
                 drawCricle(ctx, process)
                 if (process < 100) {
-                    animate();
+                    // animate();
                 }
             })
         }
