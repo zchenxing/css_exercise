@@ -45,9 +45,13 @@
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
+    /*——————————————————————————————————————————————————————————————*/
+
     // 添加标注
     var marker = L.marker([30.539553, 104.083507]).addTo(map);
     marker.bindPopup('这是我家').openPopup();
+
+    /*——————————————————————————————————————————————————————————————*/
 
     // 在地图上画圆，画小实心圆就是点
     var circle = L.circle([30.539553, 104.083507], {
@@ -57,6 +61,9 @@
         radius: 200 // 半径, 
     }).addTo(map);
     circle.bindPopup("这是电子围栏");
+    map.fitBounds(circle.getBounds());
+
+    /*——————————————————————————————————————————————————————————————*/
 
     // 添加多边形 
     var polygon = L.polygon([
@@ -66,6 +73,7 @@
     ]).addTo(map);
     polygon.bindPopup('这是多边形围栏');
 
+    /*——————————————————————————————————————————————————————————————*/
 
     // // 添加单独的弹出框图层
     // var popup = L.popup()
@@ -79,15 +87,226 @@
     // }
     // map.on('click', defaultClick)
 
-    // 点击地图事件有可以显示当前点击位置经纬度的latlng事件
-    var popup = L.popup();
-    function onMapClick(e) {
-        popup.setLatLng(e.latlng)
-            .setContent("当前点击位置： " + e.latlng.toString())
-            .openOn(map);
-    }
-    map.on('click', onMapClick);
 
+    /*——————————————————————————————————————————————————————————————*/
+
+
+    // // 点击地图事件有可以显示当前点击位置经纬度的latlng事件
+    // var popup = L.popup();
+    // function onMapClick(e) {
+    //     popup.setLatLng(e.latlng)
+    //         .setContent("当前点击位置： " + e.latlng.toString())
+    //         .openOn(map);
+    // }
+    // map.on('click', onMapClick);
+
+
+    /*——————————————————————————————————————————————————————————————*/
+
+    // 动态绘点就是在鼠标点击位置添加一个固定半径的圆
+    // map.on('click', function (e) {
+    //     L.circle(e.latlng, {
+    //         radius: 100,
+    //         color: 'red',
+    //         fillColor: 'red',
+    //         fillOpacity: .5
+    //     }).addTo(map)
+    // })
+
+    /*——————————————————————————————————————————————————————————————*/
+    /* 
+     * 动态绘线主要涉及到三个事件:click,dbclick,mousemove
+     * click确定线的折点，dbclick确定线的终点，mousemove绘制鼠标移动过程中图形的变化。如果我们有一个地图map,动态绘线的代码如下：
+     */
+
+    /*
+        var points = []
+        var lines = new L.polyline(points)
+        var tempLines = new L.polyline([])
+        map.on('click', onClick);    //点击地图
+        map.on('dblclick',onDoubleClick);
+
+        function onClick(e) {
+            points.push([e.latlng.lat, e.latlng.lng])
+            lines.addLatLng(e.latlng)
+            map.addLayer(lines)
+            map.addLayer(L.circle(e.latlng,{color:'#ff0000',fillColor:'ff0000',fillOpacity:1}))
+            map.on('mousemove',onMove)//双击地图
+        }
+        function onMove(e) {
+            if(points.length > 0) {
+                ls = [points[points.length - 1], [e.latlng.lat, e.latlng.lng]]
+                tempLines.setLatLngs(ls)
+                map.addLayer(tempLines)
+            }
+        }
+        // 双击关闭事件
+        function onDoubleClick(e) {
+            L.polyline(points).addTo(map)
+            points = []
+            lines = new L.polyline(points)
+            map.off('mousemove') //map.off(....) 关闭该事件
+        }
+
+    */
+
+    /*——————————————————————————————————————————————————————————————*/
+
+    /*
+     * 动态绘多边形
+     * 动态绘多边形同样涉及到三个事件:click,dbclick,mousemove，如果我们有一个地图map，动态绘制多边形的代码如下
+     */
+
+    /*
+    var points = []
+    var lines = new L.polyline([])
+    var tempLines = new L.polyline([], {
+        dashArray: 5
+    })
+
+    map.on('click', onClick); //点击地图
+    map.on('mousemove', onMove)
+    document.onkeydown = function (event) {
+        var e = event || window.event || arguments.callee.caller.arguments[0];
+        if (e && e.keyCode == 27) { // 按 Esc 
+            // 结束绘图
+            onEnd();
+        }
+    };
+
+
+    function onClick(e) {
+        points.push([e.latlng.lat, e.latlng.lng])
+        lines.addLatLng(e.latlng)
+        map.addLayer(tempLines)
+        map.addLayer(lines)
+        map.addLayer(L.circle(e.latlng, {
+            color: '#ff0000',
+            fillColor: 'ff0000',
+            fillOpacity: 1
+        }))
+    }
+
+    function onMove(e) {
+        if (points.length > 0) {
+            ls = [points[points.length - 1],
+                [e.latlng.lat, e.latlng.lng], points[0]
+            ]
+            tempLines.setLatLngs(ls)
+            // map.addLayer(tempLines)
+        }
+    }
+
+    function onEnd(e) {
+        L.polygon(points).addTo(map)
+        points = []
+        //map.removeLayer(tempLines)
+        //tempLines.remove()
+        lines.remove()
+        tempLines.remove()
+        lines = new L.polyline([])
+    }
+    */
+
+    /*——————————————————————————————————————————————————————————————*/
+
+    // 动态绘制矩形
+    /*
+    let rectangle
+    let tmprec
+    let start = false
+    const latlngs = []
+    map.on('click', onClick)
+
+    function onClick(e) {
+        if (!start) {
+            if (typeof tmprec != 'undefined') {
+                tmprec.remove()
+            }
+            //左上角坐标
+            latlngs[0] = [e.latlng.lat, e.latlng.lng]
+            //开始绘制，监听鼠标移动事件
+            map.on('mousemove', onMove)
+        } else {
+            onEnd(e)
+        }
+        start = !start
+    }
+
+    function onMove(e) {
+        latlngs[1] = [e.latlng.lat, e.latlng.lng]
+        //删除临时矩形
+        if (typeof tmprect != 'undefined') {
+            tmprect.remove()
+        }
+        //添加临时矩形
+        tmprect = L.rectangle(latlngs, {
+            dashArray: 5
+        }).addTo(map)
+    }
+
+    function onEnd(e) {
+        //矩形绘制完成，移除临时矩形，并停止监听鼠标移动事件
+        tmprect.remove()
+        map.off('mousemove')
+        //右下角坐标
+        latlngs[1] = [e.latlng.lat, e.latlng.lng]
+        rectangle = L.rectangle(latlngs, {
+            color: '#3300ff',
+            fillOpacity: 0.3,
+            weight: 2
+        })
+        rectangle.addTo(map)
+        //调整view范围
+        map.fitBounds(latlngs)
+    }
+
+    */
+
+    
+    /*——————————————————————————————————————————————————————————————*/
+    // 绘制原型
+
+    let lastLatlng
+    let nowLatlng
+    let circles;
+    let start = false
+    map.on('click', onClick);
+
+    function onClick(e) {
+        if (!start) {
+            lastLatlng = e.latlng;
+            map.dragging.disable();
+            map.on('mousemove', onMove)
+        } else {
+            drawOver(e)
+        }
+
+        start = !start
+    }
+
+    function onMove(e) {
+        console.log(e)
+        if (circles) {
+            map.removeLayer(circles);
+        }
+        var nowLatlng = e.latlng;
+        var radius = map.distance(nowLatlng, lastLatlng);
+        // 计算半径
+        circles = L.circle(lastLatlng, {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.50,
+            radius: radius
+        });
+        map.addLayer(circles);
+        // 通过添加图层的方式绘制圆形
+    }
+
+    function drawOver() {
+        map.off();
+        map.dragging.enable();
+    }
 </script>
 
 
