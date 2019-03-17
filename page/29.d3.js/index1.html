@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/d3/4.10.0/d3.min.js"></script>
+</head>
+<body>
+    
+    <div id="svg"></div>
+    
+    <script>
+        const detaset = [50, 43, 120, 87, 99, 167, 142];
+        const height = 400;
+        const width = 400;
+        const svg = d3.select('#svg').append("svg").attr("height",height).attr("width", width); // 在页面上添加svg并设置宽高
+        const padding = {top: 20, left: 20, right: 20, bottom: 20}; // 添加边距
+        const rectStep = 35; // 矩形所占宽度
+        const rectWidth = 30; // 真实宽度
+        
+        svg.selectAll('rect').data(datas) // rect代表矩形
+
+    </script>
+</body>
+</html>
