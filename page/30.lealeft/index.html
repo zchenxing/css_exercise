@@ -265,16 +265,21 @@
 
     
     /*——————————————————————————————————————————————————————————————*/
-    // 绘制原型
-
+    // 动态绘制圆形
+    let tmpCircle
     let lastLatlng
     let nowLatlng
-    let circles;
+    let circles
     let start = false
     map.on('click', onClick);
 
     function onClick(e) {
         if (!start) {
+
+            if (typeof tmpCircle != 'undefined') {
+                tmpCircle.remove();
+            }
+
             lastLatlng = e.latlng;
             map.dragging.disable();
             map.on('mousemove', onMove)
@@ -286,27 +291,35 @@
     }
 
     function onMove(e) {
-        console.log(e)
-        if (circles) {
-            map.removeLayer(circles);
-        }
+        
         var nowLatlng = e.latlng;
         var radius = map.distance(nowLatlng, lastLatlng);
-        // 计算半径
-        circles = L.circle(lastLatlng, {
-            color: 'red',
-            fillColor: '#f03',
-            fillOpacity: 0.50,
-            radius: radius
-        });
-        map.addLayer(circles);
-        // 通过添加图层的方式绘制圆形
+
+        if (typeof tmpCircle != 'undefined') {
+            tmpCircle.remove()
+        }
+
+        // if (circles) {
+        //     map.removeLayer(circles);
+        // }
+        // var nowLatlng = e.latlng;
+        // var radius = map.distance(nowLatlng, lastLatlng);
+        // // 计算半径
+        // circles = L.circle(lastLatlng, {
+        //     color: 'red',
+        //     fillColor: '#f03',
+        //     fillOpacity: 0.50,
+        //     radius: radius
+        // });
+        // map.addLayer(circles);
+        // // 通过添加图层的方式绘制圆形
     }
 
     function drawOver() {
         map.off();
         map.dragging.enable();
     }
+
 </script>
 
 
