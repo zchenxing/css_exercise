@@ -45,11 +45,20 @@
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
+    // 添加比例尺
+    L.control.scale().addTo(map);
+
     /*——————————————————————————————————————————————————————————————*/
 
     // 添加标注
     var marker = L.marker([30.539553, 104.083507]).addTo(map);
     marker.bindPopup('这是我家').openPopup();
+
+    var popup = L.popup()
+        .setLatLng([30.539553, 104.078507])
+        .setContent('<p>Hello world!<br />This is a nice popup.</p>')
+        .openOn(map);
+
 
     /*——————————————————————————————————————————————————————————————*/
 
@@ -61,7 +70,7 @@
         radius: 200 // 半径, 
     }).addTo(map);
     circle.bindPopup("这是电子围栏");
-    map.fitBounds(circle.getBounds());
+    map.fitBounds(circle.getBounds()); // 定位到当前
 
     /*——————————————————————————————————————————————————————————————*/
 
@@ -263,8 +272,11 @@
 
     */
 
-    
+
     /*——————————————————————————————————————————————————————————————*/
+
+    /*
+
     // 动态绘制圆形
     let tmpCircle
     let lastLatlng
@@ -275,18 +287,15 @@
 
     function onClick(e) {
         if (!start) {
-
             if (typeof tmpCircle != 'undefined') {
                 tmpCircle.remove();
             }
-
             lastLatlng = e.latlng;
             map.dragging.disable();
             map.on('mousemove', onMove)
         } else {
             drawOver(e)
         }
-
         start = !start
     }
 
@@ -298,28 +307,65 @@
         if (typeof tmpCircle != 'undefined') {
             tmpCircle.remove()
         }
-
-        // if (circles) {
-        //     map.removeLayer(circles);
-        // }
-        // var nowLatlng = e.latlng;
-        // var radius = map.distance(nowLatlng, lastLatlng);
-        // // 计算半径
-        // circles = L.circle(lastLatlng, {
-        //     color: 'red',
-        //     fillColor: '#f03',
-        //     fillOpacity: 0.50,
-        //     radius: radius
-        // });
-        // map.addLayer(circles);
-        // // 通过添加图层的方式绘制圆形
+        //添加临时矩形
+        tmpCircle = L.circle(lastLatlng, {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.50,
+            radius: radius
+        }).addTo(map)
     }
 
-    function drawOver() {
-        map.off();
+    function drawOver(e) {
+        //矩形绘制完成，移除临时矩形，并停止监听鼠标移动事件
+        tmpCircle.remove()
+        map.off('mousemove')
+        //右下角坐标
+        var nowLatlng = e.latlng;
+        var radius = map.distance(nowLatlng, lastLatlng);
+        circles = L.circle(lastLatlng, {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.50,
+            radius: radius
+        });
+        circles.addTo(map)
         map.dragging.enable();
     }
 
+    */
+
+
+    /*——————————————————————————————————————————————————————————————*/
+
+    /*
+    // Using GeoJSON with leaflet
+    var myLines = [{
+        "type": "LineString",
+        "coordinates": [
+            [104.083507, 30.539553],
+            [104.483507, 31.039553],
+            [104.923507, 30.669553]
+        ]
+    }, {
+        "type": "LineString",
+        "coordinates": [
+            [105.083507, 30.539553],
+            [105.483507, 31.039553],
+            [105.923507, 30.669553]
+        ]
+    }];
+
+    var myStyle = {
+        "color": "#ff7800",
+        "weight": 5,
+        "opacity": 0.65
+    };
+
+    L.geoJSON(myLines, {
+        style: myStyle
+    }).addTo(map);
+*/
 </script>
 
 
