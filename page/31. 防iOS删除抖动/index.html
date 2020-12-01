@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <div style="margin-top: 20;">
+            <div class="status-item">
+                <div
+                data-delete="true"
+                class="unit unit-1"
+                />
+
+                <div>状1</div>
+            </div>
+            <div class="status-item">
+                <div
+                data-delete="true"
+                class="unit unit-2"
+                />
+
+                <div>状2</div>
+            </div>
+            <div class="status-item">
+                <div
+                    data-delete="true"
+                    class="unit unit-0"
+                />
+
+                <div>状3</div>
+            </div>
+        </div>
+    </main>
+
+
+
+</body>
+
+<style>
+
+.status-item {
+    float: left;
+    margin-right: 20px;
+}
+
+.unit {
+    background: #fefefe;
+    width: 34px;
+    height: 34px;
+    box-sizing: border-box;
+    margin: 0 20px 0 0;
+    border: 1px solid black;
+    text-align: center;
+    float: left;
+    border-radius: 6px;
+    will-change: transform;
+    position: relative;
+    cursor: pointer;
+}
+
+.unit[data-delete=true]:after {
+        content: '-';
+        color: #fff;
+        font-size: 30px;
+        position: absolute;
+        right: -9px;
+        top: -9px;
+        width: 18px;
+        height: 18px;
+        line-height: 13px;
+        border-radius: 18px;
+        background: #F55044;
+    }
+
+.unit-0 {
+    animation: shake-crazy 1.5s infinite linear;
+}
+
+.unit-1 {
+    animation: shake-crazy 1.1s infinite ease-in-out;
+}
+
+.unit-2 {
+    animation: shake-crazy 1.8s infinite ease-in;
+}
+
+@keyframes shake-crazy {
+    0% {
+        transform:translate(0px, 0px) rotate(0deg);
+    }
+    17% {
+        transform:translate(.4px, .4px) rotate(4deg)
+    }
+    34% {
+        transform:translate(-.4px, -.4px) rotate(-4deg)
+    }
+    51% {
+        transform:translate(0px, -.6px) rotate(0deg)
+    }
+    68% {
+        transform:translate(.4px, -.4px) rotate(4deg)
+    }
+    85% {
+        transform:translate(-.4px, .4px) rotate(-4deg)
+    }
+    100% {
+        transform:translate(0px, .6px) rotate(0deg)
+    }
+}
+
+</style>
+
+</html>
